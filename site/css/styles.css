@@ -354,14 +354,14 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   color: var(--text);
   font-weight: 500;
 }
-/* In light mode the video stays bright; white glow keeps dark text legible. */
+/* In light mode the video stays bright; subtle white highlight + soft dark drop keeps dark text legible. */
 [data-theme="light"] .hero-content .hero-title,
 [data-theme="light"] .hero-content .hero-lead,
 [data-theme="light"] .hero-content .hero-eyebrow {
   text-shadow:
-    0 2px 18px rgba(255, 255, 255, .95),
-    0 1px 3px rgba(255, 255, 255, .95),
-    0 0 30px rgba(255, 255, 255, .85);
+    0 1px 0 rgba(255, 255, 255, .9),
+    0 2px 10px rgba(0, 0, 0, .18),
+    0 4px 24px rgba(0, 0, 0, .12);
 }
 .hero-cta {
   display: flex;
