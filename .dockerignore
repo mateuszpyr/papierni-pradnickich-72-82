@@ -1,0 +1,12 @@
+.git
+.github
+.vscode
+.idea
+node_modules
+*.log
+Dockerfile
+docker-compose.yml
+README.md
+.dockerignore
+.gitignore
+.nojekyll

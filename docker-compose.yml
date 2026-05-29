@@ -1,0 +1,11 @@
+services:
+  web:
+    build: .
+    image: papierni-pradnickich-72-82:latest
+    container_name: papierni-web
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    # Optional: mount source for live edits during development
+    # volumes:
+    #   - .:/usr/share/nginx/html:ro
