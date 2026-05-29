@@ -1,0 +1,123 @@
+{
+  "brand": {
+    "title": "Papiernie Prądnickie",
+    "sub": "Housing Community 72–82"
+  },
+  "cta": {
+    "eyebrow": "Live here?",
+    "title": "Residents' area",
+    "lead": "Property manager contacts, emergency numbers, estate rules and the places where we meet as neighbours — all in one place.",
+    "primary": "Open the residents' area",
+    "secondary": "See the gallery",
+    "stat1": "buildings",
+    "stat2": "numbers",
+    "stat3": "community"
+  },
+  "nav": {
+    "news": "News",
+    "community": "Residents' area",
+    "handbook": "Handbook",
+    "gallery": "Gallery"
+  },
+  "hero": {
+    "eyebrow": "Kraków · Prądnik Biały",
+    "title1": "Housing Community",
+    "lead": "Six buildings, one neighbourhood. News, information and everything you need as a resident.",
+    "scroll": "Scroll",
+    "miniLabelPre": "Community of",
+    "miniLabelMain": "Papiernie Prądnickich 72–82",
+    "miniLatest": "Latest update",
+    "showVideo": "Welcome",
+    "miniSub": "Six buildings, one neighbourhood"
+  },
+  "news": {
+    "title": "Announcements",
+    "subtitle": "What's happening in the community — latest news from the board.",
+    "loading": "Loading announcements…",
+    "empty": "No announcements yet.",
+    "error": "Failed to load announcements.",
+    "discuss": "Discuss on Messenger",
+    "share": "Copy link",
+    "shared": "Copied!",
+    "min": "min",
+    "all": "All news"
+  },
+  "newsIndex": {
+    "title": "All news",
+    "subtitle": "Full archive of community announcements."
+  },
+  "community": {
+    "title": "Neighbourhood community",
+    "subtitle": "Join the discussion, ask questions, share information.",
+    "fbTitle": "Facebook group",
+    "fbDesc": "Posts, events, longer resident discussions.",
+    "msgTitle": "Messenger group",
+    "msgDesc": "Quick questions, current matters, live chat."
+  },
+  "quick": {
+    "handbookTitle": "Resident handbook",
+    "handbookDesc": "Emergency numbers, maintenance hotline, board contact.",
+    "galleryTitle": "Gallery",
+    "galleryDesc": "Photos from community life, events and renovations."
+  },
+  "handbook": {
+    "title": "Resident handbook",
+    "subtitle": "Key contacts and information in one place.",
+    "emergency": {
+      "badge": "Immediate help",
+      "title": "Emergency phones",
+      "eu": "Emergency number (EU)",
+      "fire": "Fire brigade",
+      "medical": "Ambulance",
+      "police": "Police",
+      "gas": "Gas emergency",
+      "power": "Power emergency",
+      "water": "Water emergency"
+    },
+    "maintenance": {
+      "badge": "Community",
+      "title": "Maintenance hotline",
+      "desc": "Infrastructure failures, technical issues in stairwells, basements, on the facade.",
+      "phone": "24h phone",
+      "note": "Number will be filled in by the community board."
+    },
+    "admin": {
+      "badge": "Board / Administration",
+      "title": "Community administration",
+      "name": "Administrator",
+      "phone": "Phone",
+      "email": "Email",
+      "hours": "Office hours"
+    },
+    "address": {
+      "badge": "Address",
+      "title": "Community address",
+      "name": "Housing Community Papierni Prądnickich 72–82",
+      "street": "Papierni Prądnickich St. 72, 74, 76, 78, 80, 82",
+      "city": "31-000 Kraków, Poland"
+    },
+    "faq": {
+      "badge": "Good to know",
+      "title": "Daily life",
+      "q1": "How do we sort waste?",
+      "a1": "Section to be filled in — bin colours, pickup schedule, waste shelter location.",
+      "q2": "Where to park?",
+      "a2": "Section to be filled in — assigned spots, guest parking, rules.",
+      "q3": "Bike & stroller room",
+      "a3": "Section to be filled in — location, access."
+    }
+  },
+  "gallery": {
+    "title": "Gallery",
+    "eyebrow": "Life of the estate",
+    "subtitle": "Photos from community life — events, renovations, our greenery.",
+    "loading": "Loading gallery…",
+    "empty": "Gallery is empty — photos will appear here soon."
+  },
+  "footer": {
+    "brand": "Housing Community Papierni Prądnickich 72–82",
+    "address": "Papierni Prądnickich St. 72–82, Kraków",
+    "copyright": "© Housing Community Papierni Prądnickich.",
+    "madeBy": "Site maintained by residents."
+  }
+}

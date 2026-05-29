@@ -1,0 +1,123 @@
+{
+  "brand": {
+    "title": "Papiernie Prądnickie",
+    "sub": "Wspólnota Mieszkaniowa 72–82"
+  },
+  "cta": {
+    "eyebrow": "Mieszkasz tutaj?",
+    "title": "Strefa mieszkańca",
+    "lead": "Kontakty do administratora, telefony alarmowe, zasady osiedla i miejsca, gdzie spotykamy się jako sąsiedzi — wszystko w jednym miejscu.",
+    "primary": "Przejdź do strefy mieszkańca",
+    "secondary": "Zobacz galerię",
+    "stat1": "budynków",
+    "stat2": "numery",
+    "stat3": "wspólnota"
+  },
+  "nav": {
+    "news": "Aktualności",
+    "community": "Strefa mieszkańca",
+    "handbook": "Niezbędnik",
+    "gallery": "Galeria"
+  },
+  "hero": {
+    "eyebrow": "Kraków · Prądnik Biały",
+    "title1": "Wspólnota Mieszkaniowa",
+    "lead": "Sześć budynków, jedno sąsiedztwo. Informacje, aktualności i wszystko, czego potrzebujesz jako mieszkaniec.",
+    "scroll": "Przewiń",
+    "miniLabelPre": "Wspólnota Mieszkaniowa",
+    "miniLabelMain": "Papierni Prądnickich 72–82",
+    "miniLatest": "Najnowsza aktualność",
+    "showVideo": "Powitanie",
+    "miniSub": "Sześć budynków, jedno sąsiedztwo"
+  },
+  "news": {
+    "title": "Aktualności",
+    "subtitle": "Co dzieje się we wspólnocie — najnowsze ogłoszenia i informacje od zarządu.",
+    "loading": "Ładowanie aktualności…",
+    "empty": "Brak aktualności.",
+    "error": "Nie udało się załadować ogłoszeń.",
+    "discuss": "Dyskutuj na Messengerze",
+    "share": "Kopiuj link",
+    "shared": "Skopiowano!",
+    "min": "min",
+    "all": "Wszystkie aktualności"
+  },
+  "newsIndex": {
+    "title": "Wszystkie aktualności",
+    "subtitle": "Pełna historia ogłoszeń wspólnoty."
+  },
+  "community": {
+    "title": "Społeczność sąsiedzka",
+    "subtitle": "Dołącz do dyskusji, zadaj pytanie, podziel się informacją.",
+    "fbTitle": "Grupa na Facebooku",
+    "fbDesc": "Posty, wydarzenia, dłuższe dyskusje mieszkańców.",
+    "msgTitle": "Grupa na Messengerze",
+    "msgDesc": "Szybkie pytania, bieżące sprawy, czat na żywo."
+  },
+  "quick": {
+    "handbookTitle": "Niezbędnik mieszkańca",
+    "handbookDesc": "Telefony alarmowe, pogotowie konserwacyjne, kontakt do zarządu.",
+    "galleryTitle": "Galeria",
+    "galleryDesc": "Zdjęcia z życia wspólnoty, wydarzeń i remontów."
+  },
+  "handbook": {
+    "title": "Niezbędnik mieszkańca",
+    "subtitle": "Najważniejsze kontakty i informacje w jednym miejscu.",
+    "emergency": {
+      "badge": "Pomoc natychmiastowa",
+      "title": "Telefony alarmowe",
+      "eu": "Numer alarmowy (UE)",
+      "fire": "Straż pożarna",
+      "medical": "Pogotowie ratunkowe",
+      "police": "Policja",
+      "gas": "Pogotowie gazowe",
+      "power": "Pogotowie energetyczne",
+      "water": "Pogotowie wodociągowe"
+    },
+    "maintenance": {
+      "badge": "Wspólnota",
+      "title": "Pogotowie konserwacyjne",
+      "desc": "Awarie instalacji, problemy techniczne na klatce, w piwnicy, na elewacji.",
+      "phone": "Telefon 24h",
+      "note": "Numer zostanie uzupełniony przez zarząd wspólnoty."
+    },
+    "admin": {
+      "badge": "Zarząd / Administracja",
+      "title": "Administracja wspólnoty",
+      "name": "Zarządca",
+      "phone": "Telefon",
+      "email": "E-mail",
+      "hours": "Godziny przyjęć"
+    },
+    "address": {
+      "badge": "Adres",
+      "title": "Adres wspólnoty",
+      "name": "Wspólnota Mieszkaniowa Papierni Prądnickich 72–82",
+      "street": "ul. Papierni Prądnickich 72, 74, 76, 78, 80, 82",
+      "city": "31-000 Kraków"
+    },
+    "faq": {
+      "badge": "Dobre wiedzieć",
+      "title": "Życie codzienne",
+      "q1": "Jak segregujemy śmieci?",
+      "a1": "Sekcja do uzupełnienia — kolory pojemników, harmonogram odbioru, lokalizacja altany śmietnikowej.",
+      "q2": "Gdzie parkować?",
+      "a2": "Sekcja do uzupełnienia — miejsca przypisane, miejsca gościnne, zasady.",
+      "q3": "Rowerownia, wózkownia",
+      "a3": "Sekcja do uzupełnienia — lokalizacja, dostęp."
+    }
+  },
+  "gallery": {
+    "title": "Galeria",
+    "eyebrow": "Życie osiedla",
+    "subtitle": "Zdjęcia z życia wspólnoty — wydarzeń, remontów, zieleni osiedlowej.",
+    "loading": "Ładowanie galerii…",
+    "empty": "Galeria jest pusta — wkrótce pojawią się tutaj zdjęcia."
+  },
+  "footer": {
+    "brand": "Wspólnota Mieszkaniowa Papierni Prądnickich 72–82",
+    "address": "ul. Papierni Prądnickich 72–82, Kraków",
+    "copyright": "© Wspólnota Papierni Prądnickich.",
+    "madeBy": "Strona prowadzona przez mieszkańców."
+  }
+}

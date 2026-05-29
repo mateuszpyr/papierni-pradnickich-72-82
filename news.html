@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aktualność — Wspólnota Mieszkaniowa Papierni Prądnickich 72–82" />
+  <title>Aktualność — Wspólnota PP 72–82</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    (function(){
+      var t = localStorage.getItem('wp-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var l = localStorage.getItem('wp-lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'pl');
+      document.documentElement.setAttribute('lang', l);
+    })();
+  </script>
+  <link rel="stylesheet" href="site/css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="./">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 L4 9 v11 a1 1 0 0 0 1 1 h5 v-6 h4 v6 h5 a1 1 0 0 0 1 -1 V9 z"/>
+        <path d="M9 13 c1.5 -2 4.5 -2 6 0" stroke-width="1.5"/>
+      </svg>
+    </span>
+    <span class="brand-text">
+      <span class="brand-title" data-i18n="brand.title">Papiernie Prądnickie</span>
+      <span class="brand-sub" data-i18n="brand.sub">Wspólnota Mieszkaniowa 72–82</span>
+    </span>
+  </a>
+
+  <nav class="site-nav" aria-label="Main">
+    <a href="news-index.html" data-i18n="nav.news">Aktualności</a>
+    <a href="handbook.html" data-i18n="nav.community">Strefa mieszkańca</a>
+    <a href="gallery.html" data-i18n="nav.gallery">Galeria</a>
+  </nav>
+
+  <div class="header-tools">
+    <button class="lang-toggle" id="langToggle" aria-label="Switch language" title="Język / Language">
+      <span class="lang-flag">🇵🇱</span><span class="lang-code">PL</span>
+    </button>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Theme">
+      <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</header>
+
+<main class="news-page">
+  <section class="section">
+    <div id="newsDetail">
+      <p class="news-loading" data-i18n="news.loading">Ładowanie…</p>
+    </div>
+  </section>
+
+  <section class="section section-alt" id="newsRelated"></section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="footer-brand">
+      <strong data-i18n="footer.brand">Wspólnota Mieszkaniowa Papierni Prądnickich 72–82</strong><br/>
+      <span data-i18n="footer.address">ul. Papierni Prądnickich 72–82, Kraków</span>
+    </p>
+    <p class="footer-meta">
+      <span data-i18n="footer.copyright">© Wspólnota Papierni Prądnickich.</span>
+      <span data-i18n="footer.madeBy">Strona prowadzona przez mieszkańców.</span>
+    </p>
+  </div>
+</footer>
+
+<script src="site/js/i18n.js"></script>
+<script src="site/js/theme.js"></script>
+<script src="site/js/news.js"></script>
+</body>
+</html>
