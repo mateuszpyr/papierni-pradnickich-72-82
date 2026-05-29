@@ -335,7 +335,14 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 }
 [data-theme="dark"] .hero-eyebrow { color: var(--accent); }
 
-.hero-title { margin-bottom: 1rem; }
+.hero-title {
+  margin-bottom: 1rem;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+@media (max-width: 480px) {
+  .hero-title { font-size: clamp(1.6rem, 7.5vw, 2rem); }
+}
 .hero-accent {
   color: var(--accent);
 }
