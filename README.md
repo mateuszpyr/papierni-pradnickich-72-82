@@ -37,6 +37,25 @@ Push do `main` → GitHub Action automatycznie publikuje stronę na GitHub Pages
 
 W ustawieniach repo: **Settings → Pages → Source: GitHub Actions**.
 
+### Docker
+
+Repo zawiera gotowy setup dla self-hostingu na własnym serwerze (np. VPS).
+
+```bash
+git clone https://github.com/mateuszpyr/papierni-pradnickich-72-82.git
+cd papierni-pradnickich-72-82
+docker compose up -d
+```
+
+Strona dostępna na `http://localhost:8080`. Pod spodem `nginx:alpine` z konfiguracją w [`nginx.conf`](nginx.conf):
+
+- gzip włączony dla tekstu (HTML/CSS/JS/JSON/SVG)
+- cache `30d, immutable` dla assetów (jpg/png/svg/woff/mp4)
+- `no-cache` dla HTML / Markdown / JSON (świeże ogłoszenia bez refresh)
+- healthcheck na `/`
+
+Aby zmienić port hosta, edytuj [`docker-compose.yml`](docker-compose.yml) (`"8080:80"` → np. `"80:80"`).
+
 ## Jak dodać ogłoszenie
 
 Zobacz [`news/README.md`](news/README.md) — instrukcja krok po kroku dla osoby nietechnicznej.
