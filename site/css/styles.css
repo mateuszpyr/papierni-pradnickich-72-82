@@ -269,6 +269,16 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   text-align: center;
   max-width: 900px;
 }
+/* Light mode: frosted glass card behind hero text so it stays readable over the bright video. */
+[data-theme="light"] .hero-content {
+  padding: 2.25rem clamp(1.25rem, 4vw, 3rem) 2rem;
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.48) 100%);
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+  border: 1px solid rgba(255,255,255,.55);
+  box-shadow: 0 20px 60px -30px rgba(0,0,0,.35);
+}
 
 /* Staggered fade-in for hero pieces */
 .hero-eyebrow,
@@ -361,14 +371,11 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   color: var(--text);
   font-weight: 500;
 }
-/* In light mode the video stays bright; white glow keeps dark text legible. */
+/* On the frosted card we no longer need the heavy white glow — keep a tiny shadow for crispness. */
 [data-theme="light"] .hero-content .hero-title,
 [data-theme="light"] .hero-content .hero-lead,
 [data-theme="light"] .hero-content .hero-eyebrow {
-  text-shadow:
-    0 2px 18px rgba(255, 255, 255, .95),
-    0 1px 3px rgba(255, 255, 255, .95),
-    0 0 30px rgba(255, 255, 255, .85);
+  text-shadow: 0 1px 2px rgba(255, 255, 255, .6);
 }
 .hero-cta {
   display: flex;
