@@ -1,6 +1,6 @@
 ---
 slug: 'gorka-narodowa-zachod-park'
-date: '2026-06-01'
+date: '2026-05-30'
 tag_pl: 'Sąsiedzkie ciekawostki'
 tag_en: 'Neighbourhood'
 tag_slug: 'sasiedzkie'
