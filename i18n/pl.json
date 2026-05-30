@@ -42,6 +42,14 @@
     "min": "min",
     "all": "Wszystkie aktualności"
   },
+  "discuss": {
+    "eyebrow": "Rozmowa sąsiedzka",
+    "title": "Porozmawiajmy o tym",
+    "lead": "Masz pytanie, komentarz albo własne zdanie? Dołącz do naszej grupy na Messengerze — to tam najszybciej wymieniamy się informacjami i decydujemy o sprawach osiedla.",
+    "ctaMessenger": "Dołącz do dyskusji na Messengerze",
+    "ctaFacebook": "albo wpadnij do grupy na Facebooku",
+    "note": "Grupa jest dla mieszkańców budynków 72–82. Wejście wymaga akceptacji administratora."
+  },
   "newsIndex": {
     "title": "Wszystkie aktualności",
     "subtitle": "Pełna historia ogłoszeń wspólnoty."

@@ -42,6 +42,14 @@
     "min": "min",
     "all": "All news"
   },
+  "discuss": {
+    "eyebrow": "Neighbourhood talk",
+    "title": "Let's talk about it",
+    "lead": "Got a question, comment or your own take? Join our Messenger group — that's where we exchange information fastest and decide on estate matters together.",
+    "ctaMessenger": "Join the discussion on Messenger",
+    "ctaFacebook": "or drop by the Facebook group",
+    "note": "The group is for residents of buildings 72–82. Joining requires admin approval."
+  },
   "newsIndex": {
     "title": "All news",
     "subtitle": "Full archive of community announcements."
