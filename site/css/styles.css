@@ -1437,6 +1437,18 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 #newsRelated .news-list-tag { font-size: .6rem; }
 #newsRelated .news-list-meta { font-size: .72rem; }
 
+@media (max-width: 640px) {
+  #newsRelated .news-list { grid-template-columns: 1fr; }
+  #newsRelated .news-list-card {
+    grid-template-columns: minmax(0, 90px) minmax(0, 1fr);
+    gap: .75rem;
+    padding: .75rem;
+  }
+  #newsRelated .news-list-thumb { aspect-ratio: 1 / 1; }
+  #newsRelated .news-list-title { font-size: .95rem; }
+  #newsRelated .news-list-lead { display: none; }
+}
+
 .news-loading { text-align: center; color: var(--text-muted); padding: 2rem 0; }
 
 .news-more-wrap {
