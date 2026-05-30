@@ -3178,3 +3178,141 @@ body.search-open { overflow: hidden; }
 }
 [data-theme="dark"] .history-teaser:hover .history-teaser-cta { background: #fff; }
 [data-theme="dark"] .history-teaser-year { color: rgba(212, 165, 116, 0.3); }
+
+
+/* ===== Scroll reveal animations ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(36px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1), transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.reveal.is-revealed {
+  opacity: 1;
+  transform: none;
+}
+.reveal > * {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition-delay: 0s;
+}
+.reveal.is-revealed > * {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.12s;
+}
+.reveal.is-revealed > *:nth-child(2) { transition-delay: 0.22s; }
+.reveal.is-revealed > *:nth-child(3) { transition-delay: 0.32s; }
+.reveal.is-revealed > *:nth-child(4) { transition-delay: 0.42s; }
+.news-grid.is-revealed > *,
+.reveal.is-revealed .news-grid > * {
+  transition-delay: 0.2s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ===== CTA "Strefa mieszkanca" v2 — bardziej portfolio ===== */
+.cta-card-v2 {
+  position: relative;
+  overflow: hidden;
+}
+.cta-card-v2 .cta-badge {
+  position: absolute;
+  top: clamp(20px, 3vw, 32px);
+  right: clamp(20px, 3vw, 32px);
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  z-index: 2;
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cta-card-v2:hover .cta-badge {
+  transform: rotate(-6deg) scale(1.05);
+}
+.cta-card-v2::after {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto auto;
+  width: 70%;
+  height: 180%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.cta-card-v2 .cta-content,
+.cta-card-v2 .cta-stats {
+  position: relative;
+  z-index: 1;
+}
+.cta-card-v2 .cta-eyebrow {
+  position: relative;
+  padding-left: 28px;
+}
+.cta-card-v2 .cta-eyebrow::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 20px;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+.cta-card-v2 .cta-stat {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+.cta-card-v2:hover .cta-stat { transform: translateY(-2px); }
+.cta-card-v2 .cta-stat-num {
+  background: linear-gradient(135deg, currentColor 0%, currentColor 70%, transparent 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* ===== History teaser ribbon ===== */
+.history-teaser-ribbon {
+  position: absolute;
+  top: 18px;
+  left: -40px;
+  transform: rotate(-45deg);
+  background: #8a5a1f;
+  color: #f8f1e4;
+  padding: 6px 50px;
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 12px rgba(74, 51, 22, 0.3);
+  z-index: 3;
+  pointer-events: none;
+}
+[data-theme="dark"] .history-teaser-ribbon {
+  background: #d4a574;
+  color: #1d1610;
+}
+.history-teaser {
+  position: relative;
+}
+.history-teaser-year {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1), color 0.3s ease;
+}
+.history-teaser:hover .history-teaser-year {
+  transform: translateX(-8px) scale(1.05);
+  color: rgba(138, 90, 31, 0.55);
+}
+[data-theme="dark"] .history-teaser:hover .history-teaser-year {
+  color: rgba(212, 165, 116, 0.5);
+}
