@@ -1,7 +1,7 @@
 {
   "brand": {
     "title": "Papierni Prądnickich",
-    "sub": "Housing Community 72–82"
+    "sub": "Housing Community 72–82 (even)"
   },
   "cta": {
     "eyebrow": "Live here?",
@@ -10,7 +10,7 @@
     "primary": "Open the residents' area",
     "secondary": "See the gallery",
     "stat1": "buildings",
-    "stat2": "numbers",
+    "stat2": "even numbers",
     "stat3": "community"
   },
   "nav": {
@@ -22,10 +22,11 @@
   "hero": {
     "eyebrow": "Kraków · Prądnik Biały",
     "title1": "Housing Community",
+    "title2": "Papierni Prądnickich 72, 74, 76, 78, 80, 82",
     "lead": "Six buildings, one neighbourhood. News, information and everything you need as a resident.",
     "scroll": "Scroll",
     "miniLabelPre": "Community of",
-    "miniLabelMain": "Housing Community 72–82",
+    "miniLabelMain": "Housing Community 72–82 (even)",
     "miniLatest": "Latest update",
     "showVideo": "Welcome",
     "miniSub": "Six buildings, one neighbourhood"
@@ -48,7 +49,7 @@
     "lead": "Got a question, comment or your own take? Join our Messenger group — that's where we exchange information fastest and decide on estate matters together.",
     "ctaMessenger": "Join the discussion on Messenger",
     "ctaFacebook": "or drop by the Facebook group",
-    "note": "The group is for residents of buildings 72–82. Joining requires admin approval."
+    "note": "The group is for residents of buildings 72, 74, 76, 78, 80 and 82. Joining requires admin approval."
   },
   "newsIndex": {
     "title": "All news",
@@ -123,7 +124,7 @@
     "empty": "Gallery is empty — photos will appear here soon."
   },
   "footer": {
-    "brand": "Housing Community Papierni Prądnickich 72–82",
+    "brand": "Housing Community Papierni Prądnickich 72, 74, 76, 78, 80, 82",
     "address": "Papierni Prądnickich St. 72–82, Kraków",
     "copyright": "© Housing Community Papierni Prądnickich.",
     "madeBy": "Site maintained by residents."

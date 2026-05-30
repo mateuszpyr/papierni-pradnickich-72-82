@@ -1,7 +1,7 @@
 {
   "brand": {
     "title": "Papierni Prądnickich",
-    "sub": "Wspólnota Mieszkaniowa 72–82"
+    "sub": "Wspólnota Mieszkaniowa 72–82 (parz.)"
   },
   "cta": {
     "eyebrow": "Mieszkasz tutaj?",
@@ -10,7 +10,7 @@
     "primary": "Przejdź do strefy mieszkańca",
     "secondary": "Zobacz galerię",
     "stat1": "budynków",
-    "stat2": "numery",
+    "stat2": "numery parzyste",
     "stat3": "wspólnota"
   },
   "nav": {
@@ -22,10 +22,11 @@
   "hero": {
     "eyebrow": "Kraków · Prądnik Biały",
     "title1": "Wspólnota Mieszkaniowa",
+    "title2": "Papierni Prądnickich 72, 74, 76, 78, 80, 82",
     "lead": "Sześć budynków, jedno sąsiedztwo. Informacje, aktualności i wszystko, czego potrzebujesz jako mieszkaniec.",
     "scroll": "Przewiń",
     "miniLabelPre": "Wspólnota Mieszkaniowa",
-    "miniLabelMain": "Papierni Prądnickich 72–82",
+    "miniLabelMain": "Papierni Prądnickich 72–82 (parz.)",
     "miniLatest": "Najnowsza aktualność",
     "showVideo": "Powitanie",
     "miniSub": "Sześć budynków, jedno sąsiedztwo"
@@ -48,7 +49,7 @@
     "lead": "Masz pytanie, komentarz albo własne zdanie? Dołącz do naszej grupy na Messengerze — to tam najszybciej wymieniamy się informacjami i decydujemy o sprawach osiedla.",
     "ctaMessenger": "Dołącz do dyskusji na Messengerze",
     "ctaFacebook": "albo wpadnij do grupy na Facebooku",
-    "note": "Grupa jest dla mieszkańców budynków 72–82. Wejście wymaga akceptacji administratora."
+    "note": "Grupa jest dla mieszkańców budynków 72, 74, 76, 78, 80 i 82. Wejście wymaga akceptacji administratora."
   },
   "newsIndex": {
     "title": "Wszystkie aktualności",
@@ -123,7 +124,7 @@
     "empty": "Galeria jest pusta — wkrótce pojawią się tutaj zdjęcia."
   },
   "footer": {
-    "brand": "Wspólnota Mieszkaniowa Papierni Prądnickich 72–82",
+    "brand": "Wspólnota Mieszkaniowa Papierni Prądnickich 72, 74, 76, 78, 80, 82",
     "address": "ul. Papierni Prądnickich 72–82, Kraków",
     "copyright": "© Wspólnota Papierni Prądnickich.",
     "madeBy": "Strona prowadzona przez mieszkańców."
