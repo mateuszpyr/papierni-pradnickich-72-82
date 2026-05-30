@@ -19,15 +19,15 @@ messenger_link: ''
 
 ::: pl
 
-To podsumowanie spotkania mieszkańców z 21 lutego 2025 r. zostało zredagowane na podstawie notatek Marka Sendeckiego (przekazanych na czacie ogólnym) oraz uzupełnień Mariusza Ciastonia. Komentarze sąsiadów, które uzupełniły lub skorygowały pierwotne notatki, zostały włączone wprost do odpowiednich punktów.
+To podsumowanie spotkania mieszkańców z 21 lutego 2025 r. zostało zredagowane na podstawie notatek Marka Sendeckiego oraz uzupełnień Mariusza Ciastonia i komentarzy sąsiadów pod oryginalnym postem.
 
 ### 1. Wentylacja (blok 76)
 
-Temat został poruszony. Zarządca poinformował, że sprawdzano sytuację na miejscu i nie stwierdzono nieprawidłowości, ale po zgłoszeniach kilku mieszkańców zobowiązał się przekazać sprawę wykonawcy. Omówiono także niewystarczającą przepustowość wyciągu do okapu, która generuje uciążliwy hałas w mieszkaniach — Zarządca miał sprawdzić, dlaczego instalacja została tak zaprojektowana. W razie dalszych problemów sugerowano kontakt bezpośrednio z Dom Development.
+Temat został poruszony. Zarządca poinformował, że sprawdzano sytuację na miejscu i nie stwierdzono nieprawidłowości, ale po zgłoszeniach kilku mieszkańców zobowiązał się przekazać sprawę wykonawcy. Omówiono także niewystarczającą przepustowość wyciągu do okapu, która generuje uciążliwy hałas w mieszkaniach — Zarządca miał sprawdzić, dlaczego instalacja została tak zaprojektowana. W razie dalszych problemów sugerowano kontakt bezpośrednio z Dom Development. Niezależnie zgłoszono mailowo do Dom Development zapachy na parterze bloku 76 jako roszczenie gwarancyjne — na razie bez odzewu.
 
 ### 2. Wyposażenie rowerowni
 
-Temat poruszony, ma zostać przygotowana wycena stojaków i haków. Dodatkowo padła propozycja wyposażenia w stojaki przestrzeni pod schodami na poziomie -1.
+Temat poruszony, ma zostać przygotowana wycena stojaków i haków. Padła też propozycja wyposażenia w stojaki przestrzeni pod schodami na poziomie -1.
 
 ### 3. Centralny zmiękczacz do wody
 
@@ -79,7 +79,7 @@ Temat prawdopodobnie nie był poruszany podczas spotkania.
 
 ### 15. Koszt miejsca parkingowego
 
-Relatywnie wysoki ze względu na estymację i zależność od liczby systemów w garażu (więcej systemów = więcej przeglądów).
+Relatywnie wysoki ze względu na estymację i zależność od liczby systemów w garażu (więcej systemów = więcej przeglądów). Wspomniano też, że strefa zamieszkania nie została wprowadzona, bo w takiej strefie nie można parkować poza oznakowanymi miejscami.
 
 ### 16. Lamele na klatce
 
@@ -89,40 +89,33 @@ Są uszkodzone, czekają na wycenę. Pojawiła się prośba o wstrzymanie napraw
 
 Obecnie drzwi z hali garażowej są ogólnie otwarte — wjeżdżając samochodem, wchodzą również przypadkowe osoby, co stwarza ryzyko. Temat ma trafić do ankiety; w razie przegłosowania zostanie wyceniony.
 
+### 18. Umowa z Zarządcą nieruchomości
+
+W trakcie spotkania nie omówiono kwestii samej umowy. Otwarte pozostają pytania: czy umowa jest na czas określony, czy przedłuża się automatycznie po przyjęciu rozliczenia rocznego, jaki jest okres wypowiedzenia, jaki próg głosów potrzebny jest do rozwiązania lub nieprzedłużenia umowy. Umowa — podobnie jak uchwały — powinna zostać upubliczniona.
+
+### 19. Powiększenie ogródków (blok 74)
+
+Mieszkańcy bloku 74 proszą o wsparcie ze względów bezpieczeństwa i komfortu („od lasu") — pas zieleni jest naprawdę wąski, a po drugiej stronie jest las z wygodnymi spacerami. W dyskusji pojawiły się alternatywy: zrobienie „drogi" przed oświetleniem na granicy działki i odgrodzenie trawnika większymi roślinami, nasadzenia drzew/krzewów zamiast powiększania ogródków, albo wprowadzenie „dystansu" między ogródkami a ciągiem pieszych. Planowana jest ankieta, administracja rozeznaje opcje.
+
 ### Dodatkowe informacje
 
 - W kwietniu planowane mycie garaży.
 - W przypadku zawieszenia windy zgłaszać do konserwatora — winda wykona 2–3 próby zamknięcia i się zawiesi.
 - Spisy liczników mediów: czerwiec i grudzień.
 - Nie przechowywać chemikaliów i substancji łatwopalnych w komórkach lokatorskich.
-- Planowana ankieta dotycząca powiększenia ogródków przy bloku 74.
 - MPEC zgłosił uwagę, że jako wspólnota nie segregujemy śmieci.
 
-### Wątki z dyskusji pod postem
-
-**Umowa z Zarządcą (Mariusz Ciastoń).** Otwarte pytania, na które nie padła odpowiedź: czy umowa jest na czas określony, czy przedłuża się automatycznie po przyjęciu rozliczenia rocznego, jaki jest okres wypowiedzenia, jaki próg głosów potrzebny jest do rozwiązania lub nieprzedłużenia umowy. Umowa — podobnie jak uchwały — powinna zostać upubliczniona.
-
-**Strefa zamieszkania (Monika Michalik).** Nie została wprowadzona, bo wtedy nie można by parkować poza oznakowanymi miejscami.
-
-**Zapachy na parterze, blok 76 (Sławomir Kubiak).** Sprawa zgłoszona mailowo do Dom Development jako roszczenie gwarancyjne — na razie bez odzewu.
-
-**Powiększenie ogródków — blok 74 (Konto Zapasowe, Kamil Grocholewski, Agnieszka Rzepiszczak, Wojtek Pawłowski).** Mieszkańcy proszą o wsparcie ze względów bezpieczeństwa i komfortu („od lasu"). Padły alternatywne pomysły: zrobienie „drogi" przed oświetleniem na granicy działki i odgrodzenie trawnika większymi roślinami; nasadzenia drzew/krzewów zamiast powiększania ogródków. Inni mieszkańcy widzą sens powiększenia, zwracając uwagę, że pas zieleni od ogródków jest naprawdę wąski, a po drugiej stronie jest las z wygodnymi spacerami. Temat ma rozeznać administracja.
-
----
-
 Kwestia zmiany Zarządcy nadal pozostaje otwarta i prędzej czy później będzie wymagała wspólnej rozmowy.
-
-Podziękowania dla **Marka Sendeckiego** za podzielenie się notatkami ze spotkania oraz **Mariusza Ciastonia** za pomoc w redagowaniu i uzupełnieniu. Bez ich zaangażowania ten post by nie powstał.
 
 :::
 
 ::: en
 
-This summary of the residents' meeting on 21 February 2025 was compiled from notes shared by Marek Sendecki on the general chat, with additions from Mariusz Ciastoń. Neighbours' comments that completed or corrected the original notes are folded directly into the relevant points.
+This summary of the residents' meeting on 21 February 2025 was compiled from notes shared by Marek Sendecki, additions from Mariusz Ciastoń and comments left under the original post.
 
 ### 1. Ventilation (building 76)
 
-The topic was discussed. The Manager reported that the situation had been inspected on site and no faults were found, but after several residents reported the issue at the meeting, he committed to forward it to the contractor. The insufficient throughput of the kitchen-hood extractor was also raised — it causes a loud noise in flats, and the Manager was to check why the installation was designed this way. Residents are advised to contact Dom Development directly for any further ventilation issues.
+The topic was discussed. The Manager reported that the situation had been inspected on site and no faults were found, but after several residents reported the issue at the meeting, he committed to forward it to the contractor. The insufficient throughput of the kitchen-hood extractor was also raised — it causes a loud noise in flats, and the Manager was to check why the installation was designed this way. Residents are advised to contact Dom Development directly for any further ventilation issues. Separately, ground-floor odours in building 76 were reported to Dom Development by email as a warranty claim — no response yet.
 
 ### 2. Bike room equipment
 
@@ -178,7 +171,7 @@ Probably not raised at the meeting.
 
 ### 15. Parking-space cost
 
-Relatively high due to estimation and the number of garage systems (more systems = more inspections).
+Relatively high due to estimation and the number of garage systems (more systems = more inspections). It was also mentioned that a residential zone was not introduced — in such a zone, parking outside marked spaces would not be allowed.
 
 ### 16. Stairwell slats
 
@@ -188,29 +181,22 @@ Damaged, awaiting a quote. There was a request to hold off on repairs to avoid f
 
 The door from the garage hall is currently kept generally open — when residents drive in, random people also enter, which creates a risk. The topic will go to a survey and, if approved, be quoted.
 
+### 18. Contract with the Property Manager
+
+The contract itself wasn't discussed at the meeting. Open questions remain: is it a fixed-term contract, does it auto-renew on annual settlement, what is the notice period, what threshold of votes is required to terminate or not extend it. Like the resolutions, this contract should also be made public.
+
+### 19. Garden expansion (building 74)
+
+Residents of building 74 ask for support, citing safety and comfort ("from the forest side") — the green strip is genuinely narrow and the forest on the other side offers comfortable walks. Alternatives raised in the discussion: making a "path" before the lighting at the plot boundary and fencing off the lawn with larger plants, planting trees/shrubs instead of enlarging gardens, or introducing a "distance" between the gardens and the pedestrian path. A survey is planned and administration is looking into options.
+
 ### Additional info
 
 - Garage cleaning planned in April.
 - If the lift hangs, call the technician — the lift makes 2–3 closing attempts and then hangs.
 - Utility meter readings: June and December.
 - Don't store chemicals or flammable substances in storage units.
-- A survey is planned on enlarging the gardens at building 74.
 - MPEC has flagged that as a community we are not separating waste properly.
 
-### Discussion threads under the post
-
-**Contract with the Manager (Mariusz Ciastoń).** Open questions left unanswered: is the contract fixed-term, does it auto-renew on annual settlement, what is the notice period, what threshold is needed to terminate or not extend it. Like the resolutions, this contract should also be made public.
-
-**Residential zone (Monika Michalik).** Was not introduced — otherwise parking outside marked spaces would not be allowed.
-
-**Ground-floor odours, building 76 (Sławomir Kubiak).** Reported to Dom Development by email as a warranty claim — no response yet.
-
-**Enlarging the gardens — building 74 (Konto Zapasowe, Kamil Grocholewski, Agnieszka Rzepiszczak, Wojtek Pawłowski).** Residents ask for support, citing safety and comfort ("from the forest side"). Alternatives proposed: making a "path" before the lighting at the plot boundary and fencing off the lawn with larger plants; planting trees/shrubs instead of enlarging gardens. Others support enlargement, noting the green strip is genuinely narrow and the forest on the other side offers comfortable walks. Administration will look into options.
-
----
-
 The matter of changing the Manager remains open and will sooner or later require a community-wide conversation.
-
-Thanks to **Marek Sendecki** for sharing the meeting notes and to **Mariusz Ciastoń** for help editing and filling in the gaps. Without their involvement this post would not exist.
 
 :::

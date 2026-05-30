@@ -104,10 +104,19 @@
       }
     };
     for (const line of lines) {
-      const m = line.match(/^-\s+(.*)$/);
-      if (m) listBuf.push(m[1]);
-      else if (line.trim() === '') flushList();
-      else { flushList(); out.push(`<p>${renderInline(line)}</p>`); }
+      const trimmed = line.trim();
+      const liM = line.match(/^-\s+(.*)$/);
+      const hM = trimmed.match(/^(#{1,4})\s+(.*)$/);
+      if (liM) { listBuf.push(liM[1]); continue; }
+      flushList();
+      if (trimmed === '') continue;
+      if (trimmed === '---' || trimmed === '***') { out.push('<hr/>'); continue; }
+      if (hM) {
+        const level = Math.min(6, hM[1].length + 1); // ## -> h3, ### -> h4
+        out.push(`<h${level}>${renderInline(hM[2])}</h${level}>`);
+        continue;
+      }
+      out.push(`<p>${renderInline(line)}</p>`);
     }
     flushList();
     return out.join('');
