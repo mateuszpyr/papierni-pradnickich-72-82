@@ -11,6 +11,7 @@
   }
 
   let newsData = [];
+  let isLoading = true;
 
   // --- Markdown file loader ---------------------------------------------
   // Parses our minimal YAML frontmatter (single-quoted scalars or bare numbers)
@@ -63,8 +64,10 @@
   async function load() {
     try {
       newsData = await loadFromMarkdown();
+      isLoading = false;
       render();
     } catch (e) {
+      isLoading = false;
       const errMsg = (window.WP_I18N && window.WP_I18N.t('news.error')) || 'Nie udało się załadować ogłoszeń.';
       if (listRoot)   listRoot.innerHTML   = `<p class="news-loading">${errMsg}</p>`;
       if (detailRoot) detailRoot.innerHTML = `<p class="news-loading">${errMsg}</p>`;
@@ -263,6 +266,7 @@
   function renderList() {
     const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
     if (!newsData.length) {
+      if (isLoading) return; // keep skeleton visible during initial load
       listRoot.innerHTML = `<p class="news-loading">${(window.WP_I18N && window.WP_I18N.t('news.empty')) || 'Brak aktualności.'}</p>`;
       return;
     }
@@ -308,6 +312,7 @@
     const item = newsData.find((n) => n.slug === slug);
 
     if (!item) {
+      if (isLoading) return; // keep skeleton visible during initial load
       const notFound = lang === 'en' ? 'Article not found.' : 'Nie znaleziono ogłoszenia.';
       const backHome = lang === 'en' ? '← Back to home' : '← Wróć na stronę główną';
       detailRoot.innerHTML = `

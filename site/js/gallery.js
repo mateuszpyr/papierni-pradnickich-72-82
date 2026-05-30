@@ -3,14 +3,17 @@
   if (!root) return;
 
   let data = { albums: [] };
+  let isLoading = true;
 
   async function load() {
     try {
       const res = await fetch('assets/gallery/gallery.json', { cache: 'no-cache' });
       if (!res.ok) throw new Error('gallery load failed');
       data = await res.json();
+      isLoading = false;
       render();
     } catch (e) {
+      isLoading = false;
       renderEmpty();
     }
   }
@@ -34,7 +37,10 @@
 
   function render() {
     const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
-    if (!data.albums || !data.albums.length) { renderEmpty(); renderStats(0, 0, lang); return; }
+    if (!data.albums || !data.albums.length) {
+      if (isLoading) return; // keep skeleton visible during initial load
+      renderEmpty(); renderStats(0, 0, lang); return;
+    }
 
     const PREVIEW_MAX = 5; // max thumbs shown under cover (excluding cover itself)
 
