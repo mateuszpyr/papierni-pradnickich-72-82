@@ -259,9 +259,13 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
     linear-gradient(180deg, color-mix(in srgb, var(--bg) 30%, transparent) 0%, transparent 50%);
 }
 [data-theme="light"] .hero-overlay {
-  /* Cinematic dark gradient lets the white hero text breathe on top of the dimmed video. */
+  /* Cinematic dark gradient — deeper at the bottom to ground the hero and ease the transition into the next section. */
   background:
-    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.20) 45%, rgba(0,0,0,.55) 100%);
+    linear-gradient(180deg,
+      rgba(0,0,0,.35) 0%,
+      rgba(0,0,0,.18) 35%,
+      rgba(0,0,0,.45) 75%,
+      rgba(0,0,0,.85) 100%);
 }
 
 .hero-content {
