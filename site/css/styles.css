@@ -548,7 +548,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 
 /* Secondary cards — clean responsive grid (2 columns on wide, 1 on narrow) */
 .news-page .news-secondary-grid {
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: clamp(1rem, 1.5vw, 1.5rem);
 }
 
@@ -669,7 +669,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* ===== Secondary grid (cards under hero) ===== */
 .news-secondary-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 
@@ -1417,7 +1417,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   margin-left: auto;
   margin-right: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(340px, 100%), 1fr));
   gap: 1.25rem;
 }
 
@@ -1483,7 +1483,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* ----- Community ----- */
 .community-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
   gap: 1.5rem;
 }
 .community-card {
@@ -1527,7 +1527,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* ----- Quick cards ----- */
 .quick-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.5rem;
 }
 .quick-card {
@@ -1753,7 +1753,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* Handbook */
 .handbook-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
   gap: 1.5rem;
 }
 .info-card {
@@ -1821,7 +1821,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* Multi-column layout inside wide info card */
 .info-cols {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(260px, 100%), 1fr));
   gap: 1.5rem 2rem;
 }
 .info-subheading {
