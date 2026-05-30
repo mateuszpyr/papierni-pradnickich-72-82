@@ -1,52 +1,6 @@
 {
   "albums": [
     {
-      "folder": "majowka-2026",
-      "date": "2026-05-12",
-      "title_pl": "Majówka sąsiedzka 2026",
-      "title_en": "Neighbourhood May picnic 2026",
-      "description_pl": "Wspólne grillowanie, gry dla dzieci i koncert na podwórzu.",
-      "description_en": "Joint barbecue, kids' games and a courtyard concert.",
-      "images": [
-        { "file": "01.jpg", "caption_pl": "Powitanie gości",  "caption_en": "Welcoming guests" },
-        { "file": "02.jpg", "caption_pl": "Grill rusza",       "caption_en": "Barbecue starting" },
-        { "file": "03.jpg", "caption_pl": "Konkursy dla dzieci","caption_en": "Kids' contests" },
-        { "file": "04.jpg", "caption_pl": "Wspólne śpiewanie", "caption_en": "Singalong" },
-        { "file": "05.jpg", "caption_pl": "Tort osiedlowy",    "caption_en": "Neighbourhood cake" },
-        { "file": "06.jpg", "caption_pl": "Zachód słońca",     "caption_en": "Sunset" },
-        { "file": "07.jpg", "caption_pl": "Sąsiedzkie rozmowy","caption_en": "Neighbourly chats" },
-        { "file": "08.jpg", "caption_pl": "Pamiątkowe zdjęcie","caption_en": "Group photo" }
-      ]
-    },
-    {
-      "folder": "remont-klatki",
-      "date": "2026-04-05",
-      "title_pl": "Remont klatki nr 78",
-      "title_en": "Stairwell renovation no. 78",
-      "description_pl": "Malowanie, nowe oświetlenie LED i naprawa schodów.",
-      "description_en": "Repainting, new LED lighting and stair repairs.",
-      "images": [
-        { "file": "01.jpg", "caption_pl": "Stan przed",        "caption_en": "Before" },
-        { "file": "02.jpg", "caption_pl": "Demontaż lamp",     "caption_en": "Removing old lamps" },
-        { "file": "03.jpg", "caption_pl": "Malowanie ścian",   "caption_en": "Wall painting" },
-        { "file": "04.jpg", "caption_pl": "Nowe LED-y",        "caption_en": "New LEDs" },
-        { "file": "05.jpg", "caption_pl": "Efekt końcowy",     "caption_en": "Final result" }
-      ]
-    },
-    {
-      "folder": "wiosenne-prace",
-      "date": "2026-03-20",
-      "title_pl": "Wiosenne porządki",
-      "title_en": "Spring clean-up",
-      "description_pl": "Sprzątanie zieleni, sadzenie nowych roślin i mycie elewacji.",
-      "description_en": "Greenery cleanup, planting new shrubs and façade washing.",
-      "images": [
-        { "file": "01.jpg", "caption_pl": "Sprzątanie chodników", "caption_en": "Cleaning the pavements" },
-        { "file": "02.jpg", "caption_pl": "Nowe nasadzenia",      "caption_en": "New plantings" },
-        { "file": "03.jpg", "caption_pl": "Mycie elewacji",        "caption_en": "Façade washing" }
-      ]
-    },
-    {
       "folder": "test-album",
       "date": "2025-05-29",
       "title_pl": "Album przykładowy",
