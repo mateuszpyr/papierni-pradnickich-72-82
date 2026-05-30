@@ -50,7 +50,7 @@ docker compose up -d
 Strona dostępna na `http://localhost:8080`. Pod spodem `nginx:alpine` z konfiguracją w [`nginx.conf`](nginx.conf):
 
 - gzip włączony dla tekstu (HTML/CSS/JS/JSON/SVG)
-- cache `30d, immutable` dla assetów (jpg/png/svg/woff/mp4)
+- cache `30d, immutable` dla assetów (webp/svg/woff/mp4)
 - `no-cache` dla HTML / Markdown / JSON (świeże ogłoszenia bez refresh)
 - healthcheck na `/`
 

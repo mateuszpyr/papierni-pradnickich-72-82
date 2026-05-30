@@ -4,6 +4,7 @@
   let dict = {};
   let currentLang = localStorage.getItem(STORAGE_KEY) || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'pl');
   if (!SUPPORTED.includes(currentLang)) currentLang = 'pl';
+  let initialLoadDone = false;
 
   function get(key) {
     return key.split('.').reduce((acc, k) => (acc && acc[k] != null ? acc[k] : undefined), dict);
@@ -42,7 +43,11 @@
       flag.innerHTML = flagSvg[other];
       code.textContent = other.toUpperCase();
     }
-    document.dispatchEvent(new CustomEvent('i18n:changed', { detail: { lang: currentLang } }));
+    if (initialLoadDone) {
+      document.dispatchEvent(new CustomEvent('i18n:changed', { detail: { lang: currentLang } }));
+    } else {
+      initialLoadDone = true;
+    }
   }
 
   async function load(lang) {

@@ -5,7 +5,7 @@
  *  - Static assets (CSS/JS/img/font): stale-while-revalidate from cache.
  * No precaching — keeps the worker safe even if file list changes.
  */
-const VERSION = 'v1';
+const VERSION = 'v2';
 const RUNTIME = 'wp-runtime-' + VERSION;
 
 self.addEventListener('install', (event) => {
@@ -32,7 +32,7 @@ async function networkFirst(request) {
   const cache = await caches.open(RUNTIME);
   try {
     const fresh = await fetch(request);
-    if (fresh && fresh.ok && request.method === 'GET') cache.put(request, fresh.clone());
+    if (fresh && fresh.ok && fresh.status === 200 && request.method === 'GET') cache.put(request, fresh.clone());
     return fresh;
   } catch (e) {
     const cached = await cache.match(request);
@@ -49,7 +49,7 @@ async function staleWhileRevalidate(request) {
   const cache = await caches.open(RUNTIME);
   const cached = await cache.match(request);
   const network = fetch(request).then((res) => {
-    if (res && res.ok && request.method === 'GET') cache.put(request, res.clone());
+    if (res && res.ok && res.status === 200 && request.method === 'GET') cache.put(request, res.clone());
     return res;
   }).catch(() => null);
   return cached || network;
@@ -60,6 +60,8 @@ self.addEventListener('fetch', (event) => {
   if (request.method !== 'GET') return;
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) return; // skip cross-origin (fonts, etc.)
+  // Video uses Range requests / partial responses — let the browser handle it directly.
+  if (request.destination === 'video' || request.headers.has('range') || /\.(mp4|webm|ogv|m4v)$/i.test(url.pathname)) return;
 
   if (isHtml(request) || isJson(url)) {
     event.respondWith(networkFirst(request));

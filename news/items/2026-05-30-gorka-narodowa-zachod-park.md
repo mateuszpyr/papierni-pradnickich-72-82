@@ -8,7 +8,7 @@ title_pl: 'Górka Narodowa Zachód – Park: złóż wniosek do planu do 19 czer
 title_en: 'Górka Narodowa Zachód – Park: submit your application by 19 June 2026'
 author: 'Inicjatywa Górka Narodowa'
 read_min: 4
-image: 'assets/img/news/gorka-narodowa-zachod-park.jpg'
+image: 'assets/img/news/gorka-narodowa-zachod-park.webp'
 ---
 
 ::: pl

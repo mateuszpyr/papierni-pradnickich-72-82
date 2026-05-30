@@ -29,6 +29,13 @@
     } catch { return iso; }
   }
 
+  function escAttr(s) {
+    return String(s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  }
+  function renderImg(src, alt, extraAttrs = '') {
+    return `<img src="${escAttr(src)}" alt="${escAttr(alt)}" ${extraAttrs}/>`;
+  }
+
   function renderEmpty() {
     const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
     const msg = (window.WP_I18N && window.WP_I18N.t('gallery.empty')) || 'Galeria jest pusta — wkrótce pojawią się tutaj zdjęcia.';
@@ -66,7 +73,7 @@
       const coverSrc = `assets/gallery/${album.folder}/${images[0].file}`;
       const coverAlt = pick(images[0], 'caption', lang) || title;
       const cover = `<button type="button" class="album-cover" data-album="${ai}" data-index="0" aria-label="${coverAlt}">
-        <img src="${coverSrc}" alt="${coverAlt}" loading="lazy" />
+        ${renderImg(coverSrc, coverAlt, 'loading="lazy" decoding="async"')}
       </button>`;
 
       let preview = '';
@@ -79,7 +86,7 @@
           const cap = pick(img, 'caption', lang) || title;
           const isLastWithOverflow = overflow > 0 && idx === rest.length - 1;
           return `<button type="button" class="album-thumb${isLastWithOverflow ? ' album-thumb--more' : ''}" data-album="${ai}" data-index="${realIndex}" aria-label="${cap}">
-            <img src="${src}" alt="${cap}" loading="lazy" />
+            ${renderImg(src, cap, 'loading="lazy" decoding="async"')}
             ${isLastWithOverflow ? `<span class="album-more-overlay">+${overflow}</span>` : ''}
           </button>`;
         }).join('');

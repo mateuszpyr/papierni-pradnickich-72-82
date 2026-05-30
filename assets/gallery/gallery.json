@@ -8,11 +8,11 @@
       "description_pl": "Budynki, otoczenie i codzienne życie wspólnoty.",
       "description_en": "Buildings, surroundings and everyday life of the community.",
       "images": [
-        { "file": "01.jpg", "caption_pl": "Osiedle Papierni Prądnickich", "caption_en": "Papiernia Prądnicka housing estate" },
-        { "file": "02.jpg", "caption_pl": "Widok na budynki wspólnoty", "caption_en": "View of the community buildings" },
-        { "file": "03.jpg", "caption_pl": "Otoczenie osiedla", "caption_en": "Surroundings of the estate" },
-        { "file": "04.jpg", "caption_pl": "Widok na osiedle", "caption_en": "View of the estate" },
-        { "file": "05.jpg", "caption_pl": "Dziedziniec", "caption_en": "Courtyard" }
+        { "file": "01.webp", "caption_pl": "Osiedle Papierni Prądnickich", "caption_en": "Papiernia Prądnicka housing estate" },
+        { "file": "02.webp", "caption_pl": "Widok na budynki wspólnoty", "caption_en": "View of the community buildings" },
+        { "file": "03.webp", "caption_pl": "Otoczenie osiedla", "caption_en": "Surroundings of the estate" },
+        { "file": "04.webp", "caption_pl": "Widok na osiedle", "caption_en": "View of the estate" },
+        { "file": "05.webp", "caption_pl": "Dziedziniec", "caption_en": "Courtyard" }
       ]
     }
   ]

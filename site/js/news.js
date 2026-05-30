@@ -89,6 +89,10 @@
     return String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   }
 
+  function renderImg(src, alt, extraAttrs = '') {
+    return `<img src="${escapeHtml(src)}" alt="${escapeHtml(alt || '')}" ${extraAttrs}/>`;
+  }
+
   function renderInline(text) {
     let html = escapeHtml(text);
     html = html.replace(/\[([^\]]+)\]\(([^)\s]+)\)/g, (_, t, u) => `<a href="${u}" target="_blank" rel="noopener noreferrer">${t}</a>`);
@@ -156,7 +160,7 @@
 
     return `
       <a class="news-list-card" href="${href}">
-        ${image ? `<div class="news-list-thumb"><img src="${image}" alt="${escapeHtml(title)}" loading="lazy"/></div>` : '<div class="news-list-thumb news-list-thumb--empty"></div>'}
+        ${image ? `<div class="news-list-thumb">${renderImg(image, title, 'loading="lazy" decoding="async"')}</div>` : '<div class="news-list-thumb news-list-thumb--empty"></div>'}
         <div class="news-list-text">
           ${tag ? `<span class="news-list-tag" data-tag="${tagSlug}">${escapeHtml(tag)}</span>` : ''}
           <h3 class="news-list-title">${escapeHtml(title)}</h3>
@@ -185,7 +189,7 @@
     return `
       <a class="news-hero-card" href="${href}">
         <div class="news-hero-media">
-          ${image ? `<img src="${image}" alt="${escapeHtml(title)}" loading="lazy"/>` : ''}
+          ${image ? `${renderImg(image, title, 'loading="lazy" decoding="async"')}` : ''}
           <div class="news-hero-overlay"></div>
         </div>
         <div class="news-hero-text">
@@ -216,7 +220,7 @@
     return `
       <a class="news-card" href="${href}">
         <div class="news-card-media">
-          ${image ? `<img src="${image}" alt="${escapeHtml(title)}" loading="lazy"/>` : ''}
+          ${image ? `${renderImg(image, title, 'loading="lazy" decoding="async"')}` : ''}
         </div>
         <div class="news-card-text">
           ${tag ? `<span class="news-list-tag" data-tag="${tagSlug}">${escapeHtml(tag)}</span>` : ''}
@@ -251,7 +255,7 @@
     return `
       <a class="news-compact-row" href="${href}">
         <div class="news-compact-thumb${image ? '' : ' news-compact-thumb--empty'}">
-          ${image ? `<img src="${image}" alt="${escapeHtml(title)}" loading="lazy"/>` : ''}
+          ${image ? `${renderImg(image, title, 'loading="lazy" decoding="async"')}` : ''}
         </div>
         <time class="news-compact-date">${fmtDate(n.date, lang)}</time>
         <div class="news-compact-text">
@@ -359,7 +363,7 @@
         <div class="news-detail-main">
           ${tag ? `<span class="news-detail-tag" data-tag="${tagSlug}">${escapeHtml(tag)}</span>` : ''}
           <h1 class="news-detail-title">${escapeHtml(title)}</h1>
-          ${item.image ? `<figure class="news-detail-figure"><img src="${item.image}" alt="${escapeHtml(title)}"/></figure>` : ''}
+          ${item.image ? `<figure class="news-detail-figure">${renderImg(item.image, title, 'decoding="async" fetchpriority="high"')}</figure>` : ''}
           <div class="news-detail-body">${body}</div>
         </div>
       </article>`;

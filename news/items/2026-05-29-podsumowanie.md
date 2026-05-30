@@ -6,7 +6,7 @@ tag_pl: 'Podsumowanie'
 tag_en: 'Summary'
 author: 'Robert Hryniewicz'
 read_min: 2
-image: 'assets/img/news/podsumowanie.jpg'
+image: 'assets/img/news/podsumowanie.webp'
 title_pl: 'Podsumowanie'
 title_en: 'Summary'
 lead_pl: 'Łączne straty obu wspólnot przez brak nadzoru Zarządcy: 260 tys. PLN. Co dalej z odszkodowaniem, zmianą zarządcy i kompensatorami…'

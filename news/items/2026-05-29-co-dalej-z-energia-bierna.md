@@ -6,7 +6,7 @@ tag_pl: 'Energia bierna'
 tag_en: 'Reactive power'
 author: 'Robert Hryniewicz'
 read_min: 2
-image: 'assets/img/news/energia-bierna.jpg'
+image: 'assets/img/news/energia-bierna.webp'
 title_pl: 'Co dalej z energią bierną?'
 title_en: 'What''s next with reactive power?'
 lead_pl: 'PP 80-82 wybrała firmę MAXIMUS — 22 850 zł netto za kompleksową analizę, urządzenie i 5 lat gwarancji. Inwestycja zwróci się w ~4 miesiące…'

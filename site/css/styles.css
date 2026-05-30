@@ -3670,7 +3670,12 @@ body.search-open { overflow: hidden; }
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .showcase-history-mark { display: none; }
+  .showcase-history-mark {
+    width: clamp(160px, 42vw, 240px);
+    margin: 0 auto;
+    order: -1;
+  }
+  .showcase-history-text { order: 1; }
   .showcase-history-watermark { font-size: 22rem; right: -60px; }
 }
 
@@ -3832,14 +3837,31 @@ body.search-open { overflow: hidden; }
 
 @media (max-width: 560px) {
   .showcase-history-axis {
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 1.2rem;
-    max-width: 360px;
+    grid-template-columns: 1fr;
+    row-gap: 0.9rem;
+    max-width: 320px;
+    padding-top: 0.4rem;
+    position: relative;
   }
-  .showcase-history-axis::before { display: none; }
-  .axis-step { padding-top: 0; align-items: flex-start; text-align: left; padding-left: 22px; }
+  .showcase-history-axis::before {
+    display: block;
+    top: 1rem;
+    bottom: 0.4rem;
+    left: 6px;
+    right: auto;
+    width: 2px;
+    height: auto;
+    background: linear-gradient(180deg, rgba(138, 90, 31, 0.0) 0%, rgba(138, 90, 31, 0.55) 10%, rgba(138, 90, 31, 0.55) 90%, rgba(138, 90, 31, 0.0) 100%);
+  }
+  [data-theme="dark"] .showcase-history-axis::before {
+    background: linear-gradient(180deg, rgba(212, 165, 116, 0.0) 0%, rgba(212, 165, 116, 0.5) 10%, rgba(212, 165, 116, 0.5) 90%, rgba(212, 165, 116, 0.0) 100%);
+  }
+  .axis-step { padding-top: 0; align-items: flex-start; text-align: left; padding-left: 26px; flex-direction: row; gap: 0.6rem; flex-wrap: wrap; }
   .axis-step::before { left: 0; top: 6px; transform: none; }
-  .axis-step--mark::before { top: 4px; }
+  .axis-step--mark::before { top: 4px; left: -2px; }
+  .axis-year { font-size: 1.1rem; }
+  .axis-step--mark .axis-year { font-size: 1.2rem; }
+  .axis-label { font-size: 0.78rem; }
 }
 
 /* Reveal: axis dots pop in sequentially after lead */

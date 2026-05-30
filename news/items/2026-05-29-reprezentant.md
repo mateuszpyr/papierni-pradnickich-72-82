@@ -6,7 +6,7 @@ tag_pl: 'Reprezentacja'
 tag_en: 'Representation'
 author: 'Robert Hryniewicz'
 read_min: 1
-image: 'assets/img/news/reprezentant.jpg'
+image: 'assets/img/news/reprezentant.webp'
 title_pl: 'Reprezentant'
 title_en: 'Representative'
 lead_pl: 'Aktualnie Zarządca przygotowuje Uchwałę na mocy której Robert Hryniewicz będzie reprezentantem dla obu wspólnot.'

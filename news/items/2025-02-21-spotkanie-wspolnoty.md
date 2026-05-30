@@ -6,7 +6,7 @@ tag_pl: 'Spotkanie wspólnoty'
 tag_en: 'Community meeting'
 author: 'Mateusz Pyrek'
 read_min: 6
-image: 'assets/img/news/spotkanie-2025-02-21.jpg'
+image: 'assets/img/news/spotkanie-2025-02-21.webp'
 title_pl: 'Podsumowanie spotkania wspólnoty (21.02.2025)'
 title_en: 'Community meeting summary (21 Feb 2025)'
 lead_pl: 'Pełne podsumowanie spotkania mieszkańców — wentylacja, rowerownia, zmiękczacz wody, opłaty, fundusz remontowy, ładowarki EV, śmietnik i więcej.'

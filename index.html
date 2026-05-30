@@ -16,21 +16,21 @@
   <meta property="og:title" content="Wspólnota Papierni Prądnickich 72–82 — Kraków" />
   <meta property="og:description" content="Aktualności, strefa mieszkańca, galeria i kontakty zarządu wspólnoty." />
   <meta property="og:url" content="https://wspolnota.hrynie.com/papierni-pradnickich-72-82/" />
-  <meta property="og:image" content="https://wspolnota.hrynie.com/papierni-pradnickich-72-82/assets/img/og-default.jpg" />
+  <meta property="og:image" content="https://wspolnota.hrynie.com/papierni-pradnickich-72-82/assets/img/og-default.webp" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Dziedziniec osiedla Papierni Prądnickich 72–82 w Krakowie" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Wspólnota Papierni Prądnickich 72–82" />
   <meta name="twitter:description" content="Aktualności, strefa mieszkańca, galeria i kontakty zarządu wspólnoty." />
-  <meta name="twitter:image" content="https://wspolnota.hrynie.com/papierni-pradnickich-72-82/assets/img/og-default.jpg" />
+  <meta name="twitter:image" content="https://wspolnota.hrynie.com/papierni-pradnickich-72-82/assets/img/og-default.webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="prefetch" href="news-index.html" />
   <link rel="prefetch" href="handbook.html" />
   <link rel="prefetch" href="gallery.html" />
   <link rel="prefetch" href="news/items/index.json" as="fetch" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" /></noscript>
   <script>
     (function(){
       var t = localStorage.getItem('wp-theme') || 'dark';
@@ -78,12 +78,9 @@
 <!-- ===== HERO ===== -->
 <section class="hero" id="hero">
   <div class="hero-video-wrap">
-    <video id="heroVideoDark" class="hero-video" muted playsinline loop autoplay preload="auto">
-      <source src="assets/video/hero-dark.mp4" type="video/mp4" />
-    </video>
-    <video id="heroVideoLight" class="hero-video" muted playsinline loop autoplay preload="auto">
-      <source src="assets/video/hero-light.mp4" type="video/mp4" />
-    </video>
+    <video id="heroVideo" class="hero-video" muted playsinline loop preload="none"
+           data-src-dark="assets/video/hero-dark.mp4"
+           data-src-light="assets/video/hero-light.mp4"></video>
     <div class="hero-fallback" aria-hidden="true"></div>
     <div class="hero-tint" aria-hidden="true"></div>
     <div class="hero-overlay"></div>
@@ -161,7 +158,10 @@
 <section class="showcase showcase--cta reveal" aria-labelledby="showcase-cta-title">
   <div class="showcase-grid">
     <figure class="showcase-visual" aria-hidden="true">
-      <img src="assets/img/showcase-osiedle.jpg" alt="" loading="lazy" width="1400" height="1000" />
+      <picture>
+        <source type="image/webp" srcset="assets/img/showcase-osiedle.webp" />
+        <img src="assets/img/showcase-osiedle.webp" alt="" loading="lazy" decoding="async" width="1280" height="914" />
+      </picture>
       <span class="showcase-visual-tag">6 budynków · 72–82</span>
     </figure>
     <div class="showcase-body">
@@ -212,7 +212,7 @@
       </a>
     </div>
     <figure class="showcase-history-mark" aria-hidden="true">
-      <img src="assets/img/showcase-papyrer.jpg" alt="" loading="lazy" width="590" height="780" />
+      <img src="assets/img/showcase-papyrer.webp" alt="" loading="lazy" decoding="async" width="590" height="780" />
       <figcaption class="showcase-history-mark-cap">
         <em>Papyrer</em> — Jost Amman, 1568
         <span>Wikimedia Commons · domena publiczna</span>
@@ -234,12 +234,12 @@
   </div>
 </footer>
 
-<script src="site/js/i18n.js"></script>
+<script src="site/js/i18n.js" defer></script>
 <script src="site/js/reveal.js" defer></script>
 <script src="site/js/search.js" defer></script>
-<script src="site/js/theme.js"></script>
+<script src="site/js/theme.js" defer></script>
 <script src="site/js/pwa.js" defer></script>
-<script src="site/js/news.js"></script>
-<script src="site/js/hero-video.js"></script>
+<script src="site/js/news.js" defer></script>
+<script src="site/js/hero-video.js" defer></script>
 </body>
 </html>

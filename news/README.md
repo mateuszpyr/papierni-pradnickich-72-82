@@ -64,7 +64,7 @@ Second paragraph. Lists:
 - **tag_pl / tag_en** — etykieta widoczna na karcie
 - **author** — opcjonalnie
 - **read_min** — szacowany czas czytania (liczba bez cudzysłowów)
-- **image** — opcjonalna ścieżka, np. `'assets/img/news/spotkanie.jpg'`
+- **image** — opcjonalna ścieżka, np. `'assets/img/news/spotkanie.webp'`
 - **title_pl / title_en** — tytuł
 - **lead_pl / lead_en** — zajawka pokazywana na liście. Jeśli pusta, system weźmie pierwszy akapit body
 - **link_url / link_label_pl / link_label_en** — opcjonalny link zewnętrzny

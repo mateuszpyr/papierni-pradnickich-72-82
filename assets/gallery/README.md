@@ -3,7 +3,7 @@
 ## Po polsku
 
 1. Stwórz nowy folder w `assets/gallery/`, np. `assets/gallery/2026-majowka/`.
-2. Wrzuć tam zdjęcia (najlepiej skompresowane do max ~500 KB każde, format `.jpg` lub `.webp`).
+2. Wrzuć tam zdjęcia w formacie `.webp` (skompresowane do max ~300 KB).
 3. Edytuj plik [`gallery.json`](gallery.json) i dodaj nowy album do tablicy `albums`:
 
 ```json
@@ -17,8 +17,8 @@
       "description_pl": "Spotkanie integracyjne mieszkańców na trawniku przy budynku 76.",
       "description_en": "Resident gathering on the lawn by building 76.",
       "images": [
-        { "file": "01.jpg", "caption_pl": "Grill", "caption_en": "BBQ" },
-        { "file": "02.jpg", "caption_pl": "Dzieci na trawniku", "caption_en": "Kids on the lawn" }
+        { "file": "01.webp", "caption_pl": "Grill", "caption_en": "BBQ" },
+        { "file": "02.webp", "caption_pl": "Dzieci na trawniku", "caption_en": "Kids on the lawn" }
       ]
     }
   ]
