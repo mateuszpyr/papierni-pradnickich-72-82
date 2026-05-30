@@ -207,9 +207,10 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 [data-theme="dark"]  #heroVideoDark {
   opacity: .75;
 }
+/* Light mode (cinematic): dim the bright video so white text on top reads like a film title card. */
 [data-theme="light"] #heroVideoLight {
-  opacity: .55;
-  filter: none;
+  opacity: .9;
+  filter: brightness(.55) saturate(.85) contrast(1.05);
 }
 
 .hero-fallback {
@@ -258,9 +259,9 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
     linear-gradient(180deg, color-mix(in srgb, var(--bg) 30%, transparent) 0%, transparent 50%);
 }
 [data-theme="light"] .hero-overlay {
-  /* Light mode: keep the video visible — just a soft bottom fade.
-     Text legibility comes from the white glow text-shadow below. */
-  background: linear-gradient(180deg, transparent 70%, var(--bg) 100%);
+  /* Cinematic dark gradient lets the white hero text breathe on top of the dimmed video. */
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, rgba(0,0,0,.20) 45%, rgba(0,0,0,.55) 100%);
 }
 
 .hero-content {
@@ -269,20 +270,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   text-align: center;
   max-width: 900px;
 }
-/* Light mode: per-line translucent highlight behind text only (hugs each visual line). */
-[data-theme="light"] .hero-title span,
-[data-theme="light"] .hero-lead {
-  box-decoration-break: clone;
-  -webkit-box-decoration-break: clone;
-  padding: .12em .5em;
-  border-radius: 10px;
-  background: rgba(255, 255, 255, .55);
-  /* leading-trim so the highlight does not stack-overlap on multi-line wraps */
-  line-height: 1.35;
-}
-[data-theme="light"] .hero-lead {
-  background: rgba(255, 255, 255, .5);
-}
+/* Light mode: per-line highlight replaced by cinematic white-on-dim treatment below. */
 
 /* Staggered fade-in for hero pieces */
 .hero-eyebrow,
@@ -372,14 +360,26 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   margin: 0 auto 2rem;
 }
 [data-theme="light"] .hero-lead {
-  color: var(--text);
+  color: #fff;
   font-weight: 500;
 }
-/* On the frosted card we no longer need the heavy white glow — keep a tiny shadow for crispness. */
+/* Cinematic light hero: white text with a soft dark halo for crisp contrast over the dimmed video. */
 [data-theme="light"] .hero-content .hero-title,
 [data-theme="light"] .hero-content .hero-lead,
 [data-theme="light"] .hero-content .hero-eyebrow {
-  text-shadow: 0 1px 2px rgba(255, 255, 255, .6);
+  color: #fff;
+  text-shadow:
+    0 2px 6px rgba(0, 0, 0, .65),
+    0 1px 2px rgba(0, 0, 0, .75);
+}
+[data-theme="light"] .hero-accent {
+  color: #fff;
+}
+[data-theme="light"] .hero-content .hero-eyebrow {
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .35);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 .hero-cta {
   display: flex;
