@@ -19,8 +19,6 @@ messenger_link: ''
 
 ::: pl
 
-To podsumowanie spotkania mieszkańców z 21 lutego 2025 r. zostało zredagowane na podstawie notatek Marka Sendeckiego oraz uzupełnień Mariusza Ciastonia i komentarzy sąsiadów pod oryginalnym postem.
-
 ### 1. Wentylacja (blok 76)
 
 Temat został poruszony. Zarządca poinformował, że sprawdzano sytuację na miejscu i nie stwierdzono nieprawidłowości, ale po zgłoszeniach kilku mieszkańców zobowiązał się przekazać sprawę wykonawcy. Omówiono także niewystarczającą przepustowość wyciągu do okapu, która generuje uciążliwy hałas w mieszkaniach — Zarządca miał sprawdzić, dlaczego instalacja została tak zaprojektowana. W razie dalszych problemów sugerowano kontakt bezpośrednio z Dom Development. Niezależnie zgłoszono mailowo do Dom Development zapachy na parterze bloku 76 jako roszczenie gwarancyjne — na razie bez odzewu.
@@ -110,8 +108,6 @@ Kwestia zmiany Zarządcy nadal pozostaje otwarta i prędzej czy później będzi
 :::
 
 ::: en
-
-This summary of the residents' meeting on 21 February 2025 was compiled from notes shared by Marek Sendecki, additions from Mariusz Ciastoń and comments left under the original post.
 
 ### 1. Ventilation (building 76)
 
