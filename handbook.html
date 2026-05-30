@@ -317,7 +317,12 @@
     const setActive = (a) => {
       if (current === a) return;
       links.forEach(l => l.classList.remove('active'));
-      if (a) a.classList.add('active');
+      if (a) {
+        a.classList.add('active');
+        if (window.matchMedia('(max-width: 860px)').matches) {
+          a.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+      }
       current = a;
     };
     const obs = new IntersectionObserver((entries) => {
