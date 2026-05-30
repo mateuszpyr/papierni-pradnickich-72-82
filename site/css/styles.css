@@ -2044,6 +2044,22 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   .footer-inner { flex-direction: column; text-align: center; }
 }
 
+/* ----- Small phones ----- */
+@media (max-width: 480px) {
+  html, body { overflow-x: hidden; }
+  .cta-section { padding: 3rem 1rem; }
+  .cta-card { padding: 1.75rem 1.25rem; }
+  .cta-stats { grid-template-columns: 1fr; }
+  .cta-stat { flex-direction: row; align-items: baseline; justify-content: space-between; }
+  .cta-stat-num { font-size: 1.5rem; }
+  .cta-content h2 { font-size: 1.5rem; }
+  .hero-title { font-size: clamp(1.4rem, 7vw, 1.8rem); word-break: break-word; hyphens: auto; }
+  .hero-content { padding: 0 1rem; }
+  .news-detail-body { font-size: 1rem; }
+  .news-detail-title { font-size: 1.6rem !important; }
+  main .section { padding-left: 1rem; padding-right: 1rem; }
+}
+
 /* ================== STREFA MIESZKAŃCA (handbook) ================== */
 .hb-page { max-width: 1180px; }
 
