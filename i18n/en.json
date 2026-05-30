@@ -124,6 +124,12 @@
     "loading": "Loading gallery…",
     "empty": "Gallery is empty — photos will appear here soon."
   },
+  "homeHistory": {
+    "eyebrow": "Local heritage",
+    "title": "The old paper mill",
+    "lead": "Where does our street name come from? From the very first paper mill in Poland — just a few steps away, on the Prądnik river. The year 1491.",
+    "cta": "Discover the estate's history"
+  },
   "history": {
     "eyebrow": "Local heritage",
     "title": "The old paper mill",

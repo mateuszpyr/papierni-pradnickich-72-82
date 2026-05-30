@@ -124,6 +124,12 @@
     "loading": "Ładowanie galerii…",
     "empty": "Galeria jest pusta — wkrótce pojawią się tutaj zdjęcia."
   },
+  "homeHistory": {
+    "eyebrow": "Kącik historyczny",
+    "title": "Stara papiernia",
+    "lead": "Skąd wzięła się nazwa naszej ulicy? Z pierwszej fabryki papieru w Polsce — kilka kroków stąd, nad rzeką Prądnik. Rok 1491.",
+    "cta": "Poznaj historię osiedla"
+  },
   "history": {
     "eyebrow": "Kącik historyczny",
     "title": "Stara papiernia",
