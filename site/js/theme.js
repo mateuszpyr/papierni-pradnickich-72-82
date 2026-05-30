@@ -8,3 +8,17 @@
     localStorage.setItem('wp-theme', next);
   });
 })();
+
+(function () {
+  const header = document.querySelector('.site-header');
+  if (!header) return;
+  const apply = () => {
+    document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+  };
+  apply();
+  if ('ResizeObserver' in window) {
+    new ResizeObserver(apply).observe(header);
+  } else {
+    window.addEventListener('resize', apply);
+  }
+})();

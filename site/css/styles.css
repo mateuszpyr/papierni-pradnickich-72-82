@@ -2179,7 +2179,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 .hb-doc { min-width: 0; }
 .hb-doc-section {
   margin-bottom: 3rem;
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(var(--header-h, 72px) + 16px);
 }
 .hb-doc-section:last-child { margin-bottom: 0; }
 .hb-doc-section h2 {
@@ -2551,6 +2551,9 @@ body.search-open { overflow: hidden; }
     border: 1px solid var(--border);
     border-radius: 999px;
     box-shadow: 0 6px 20px -10px rgba(0,0,0,0.18);
+  }
+  .hb-doc-section {
+    scroll-margin-top: calc(var(--header-h, 72px) + 80px);
   }
   .hb-toc { border: none; padding: 0; }
   .hb-toc-title { display: none; }
