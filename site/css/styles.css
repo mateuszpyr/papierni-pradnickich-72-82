@@ -1202,13 +1202,13 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   padding-top: 0;
 }
 .news-discuss {
-  max-width: 880px;
+  max-width: 1180px;
   margin: 0 auto;
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1.75rem;
-  align-items: start;
-  padding: 2rem 2.25rem;
+  align-items: center;
+  padding: 2.25rem 2.5rem;
   border-radius: 20px;
   background: linear-gradient(135deg,
     color-mix(in srgb, var(--accent) 14%, var(--bg-soft)) 0%,
