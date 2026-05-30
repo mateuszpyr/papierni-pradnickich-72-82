@@ -2123,10 +2123,15 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* ----- Small phones ----- */
 @media (max-width: 480px) {
   html, body { overflow-x: clip; }
-  .site-header { padding: .5rem .75rem; gap: .35rem; }
-  .brand { gap: .5rem; }
-  .brand-logo { width: 32px; height: 32px; }
-  .brand-name { font-size: .95rem; }
+  .site-header { padding: .4rem .6rem; gap: .35rem; }
+  .brand { gap: .4rem; flex: 0 1 auto; min-width: 0; }
+  .brand-logo { width: 28px; height: 28px; flex-shrink: 0; }
+  .brand-name { font-size: .8rem; line-height: 1.1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .header-tools { gap: .25rem; flex-shrink: 0; }
+  .theme-toggle, .lang-toggle { height: 32px; padding: 0 .5rem; border-radius: 8px; }
+  .theme-toggle { width: 32px; padding: 0; }
+  .lang-toggle .lang-code { font-size: .78rem; }
+  .lang-toggle svg { width: 14px; height: 14px; }
   .site-nav {
     order: 3;
     width: 100%;
@@ -2147,7 +2152,6 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
     flex: 0 0 auto;
     letter-spacing: -0.01em;
   }
-  .header-tools { gap: .25rem; }
   .cta-section { padding: 3rem 1rem; }
   .cta-card { padding: 1.75rem 1.25rem; }
   .cta-stats { grid-template-columns: 1fr; }
@@ -2159,6 +2163,10 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   .news-detail-body { font-size: 1rem; }
   .news-detail-title { font-size: 1.6rem !important; }
   main .section { padding-left: 1rem; padding-right: 1rem; }
+}
+
+@media (max-width: 360px) {
+  .brand-name { display: none; }
 }
 
 /* ================== STREFA MIESZKAŃCA (handbook) ================== */
