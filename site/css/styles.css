@@ -2322,6 +2322,59 @@ body.search-open { overflow: hidden; }
 .hb-doc-links a:hover { color: var(--accent); }
 .hb-doc-links a:hover::after { color: var(--accent); transform: translateX(3px); }
 
+/* ----- FAQ accordion ----- */
+.hb-faq {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+  margin-top: 1rem;
+}
+.hb-faq-item {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--bg-elev);
+  overflow: hidden;
+  transition: border-color .15s, box-shadow .15s;
+}
+.hb-faq-item[open] {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+.hb-faq-item > summary {
+  cursor: pointer;
+  list-style: none;
+  padding: .9rem 1.1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: .75rem;
+  color: var(--text);
+}
+.hb-faq-item > summary::-webkit-details-marker { display: none; }
+.hb-faq-item > summary::after {
+  content: "+";
+  color: var(--accent);
+  font-size: 1.4rem;
+  line-height: 1;
+  transition: transform .2s ease;
+  flex-shrink: 0;
+}
+.hb-faq-item[open] > summary::after { transform: rotate(45deg); }
+.hb-faq-item > summary:hover { color: var(--accent); }
+.hb-faq-item > summary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+}
+.hb-faq-body {
+  padding: 0 1.1rem 1rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.hb-faq-body p { margin: .25rem 0; }
+.hb-faq-body a { color: var(--accent); }
+.hb-faq-body a:hover { text-decoration: underline; }
+
 @media (max-width: 860px) {
   .hb-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .hb-sidebar { position: static; }
