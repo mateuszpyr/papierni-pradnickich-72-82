@@ -6,7 +6,7 @@ tag_pl: 'Reprezentacja'
 tag_en: 'Representation'
 author: 'Robert Hryniewicz'
 read_min: 1
-image: 'assets/img/news/reprezentant.png'
+image: 'assets/img/news/reprezentant.jpg'
 title_pl: 'Reprezentant'
 title_en: 'Representative'
 lead_pl: 'Aktualnie Zarządca sprawdza, czy ja (Robert Hryniewicz) mogę być reprezentantem dla obu wspólnot przed Ubezpieczycielem OC…'

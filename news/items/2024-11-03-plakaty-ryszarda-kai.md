@@ -6,7 +6,7 @@ tag_pl: 'Sąsiedzkie ciekawostki'
 tag_en: 'Neighbourhood notes'
 author: 'Kamil Grocholewski'
 read_min: 2
-image: 'assets/img/news/plakaty-ryszarda-kai.png'
+image: 'assets/img/news/plakaty-ryszarda-kai.jpg'
 title_pl: 'Plakaty Ryszarda Kai na naszych klatkach'
 title_en: 'Ryszard Kaja posters in our staircases'
 lead_pl: 'Na klatkach schodowych wiszą plakaty z kultowej serii „Polska” autorstwa Ryszarda Kai — wybitnego polskiego plakacisty.'
