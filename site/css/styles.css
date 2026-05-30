@@ -3393,12 +3393,12 @@ body.search-open { overflow: hidden; }
 
 /* ===== Showcase History (Stara papiernia) ===== */
 .showcase--history {
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
   color: var(--text);
   padding: clamp(4rem, 10vw, 8rem) 0;
 }
 [data-theme="dark"] .showcase--history {
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-alt) 100%);
   color: var(--text);
 }
 .showcase-history-bg {
