@@ -68,7 +68,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   transition: background-color .3s ease, color .3s ease;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 img { max-width: 100%; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color .2s; }
@@ -2122,7 +2122,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 
 /* ----- Small phones ----- */
 @media (max-width: 480px) {
-  html, body { overflow-x: hidden; }
+  html, body { overflow-x: clip; }
   .cta-section { padding: 3rem 1rem; }
   .cta-card { padding: 1.75rem 1.25rem; }
   .cta-stats { grid-template-columns: 1fr; }
