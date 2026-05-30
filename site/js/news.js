@@ -97,18 +97,28 @@
     const lines = p.split('\n');
     const out = [];
     let listBuf = [];
+    let quoteBuf = [];
     const flushList = () => {
       if (listBuf.length) {
         out.push('<ul>' + listBuf.map((li) => `<li>${renderInline(li)}</li>`).join('') + '</ul>');
         listBuf = [];
       }
     };
+    const flushQuote = () => {
+      if (quoteBuf.length) {
+        out.push('<blockquote>' + quoteBuf.map((q) => `<p>${renderInline(q)}</p>`).join('') + '</blockquote>');
+        quoteBuf = [];
+      }
+    };
     for (const line of lines) {
       const trimmed = line.trim();
       const liM = line.match(/^-\s+(.*)$/);
+      const qM = trimmed.match(/^>\s?(.*)$/);
       const hM = trimmed.match(/^(#{1,4})\s+(.*)$/);
-      if (liM) { listBuf.push(liM[1]); continue; }
+      if (liM) { flushQuote(); listBuf.push(liM[1]); continue; }
+      if (qM) { flushList(); quoteBuf.push(qM[1]); continue; }
       flushList();
+      flushQuote();
       if (trimmed === '') continue;
       if (trimmed === '---' || trimmed === '***') { out.push('<hr/>'); continue; }
       if (hM) {
@@ -119,6 +129,7 @@
       out.push(`<p>${renderInline(line)}</p>`);
     }
     flushList();
+    flushQuote();
     return out.join('');
   }
 

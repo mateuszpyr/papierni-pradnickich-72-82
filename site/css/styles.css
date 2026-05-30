@@ -1100,6 +1100,17 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   border-top: 1px solid var(--border);
   margin: 2rem 0;
 }
+.news-detail-body blockquote {
+  margin: 1.2rem 0;
+  padding: .6rem 1.1rem;
+  border-left: 3px solid var(--accent);
+  background: var(--accent-faint);
+  border-radius: 0 8px 8px 0;
+  color: var(--text);
+  font-style: italic;
+}
+.news-detail-body blockquote p { margin: 0 0 .6rem; }
+.news-detail-body blockquote p:last-child { margin-bottom: 0; }
 .news-detail-body a {
   color: var(--accent-hover);
   text-decoration: underline;
