@@ -1,0 +1,42 @@
+{
+  "name": "Wspólnota Papierni Prądnickich 72–82",
+  "short_name": "Papierni 72-82",
+  "description": "Wspólnota Mieszkaniowa Papierni Prądnickich 72, 74, 76, 78, 80, 82 — Kraków. Aktualności, strefa mieszkańca, galeria.",
+  "lang": "pl",
+  "dir": "ltr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0e1410",
+  "theme_color": "#4caf6e",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["lifestyle", "news", "social"],
+  "shortcuts": [
+    {
+      "name": "Aktualności",
+      "short_name": "News",
+      "url": "news-index.html",
+      "description": "Najnowsze wpisy ze wspólnoty"
+    },
+    {
+      "name": "Strefa mieszkańca",
+      "short_name": "Strefa",
+      "url": "handbook.html",
+      "description": "Kontakty, FAQ, instrukcje"
+    },
+    {
+      "name": "Pogotowie",
+      "short_name": "Pogotowie",
+      "url": "handbook.html#pogotowie",
+      "description": "Numer awaryjny po godzinach"
+    }
+  ]
+}

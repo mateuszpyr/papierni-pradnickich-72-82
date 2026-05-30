@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#4caf6e" />
+  <meta name="robots" content="noindex" />
+  <title>404 — Nie znaleziono strony · Wspólnota Papierni Prądnickich 72–82</title>
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    (function(){
+      var t = localStorage.getItem('wp-theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var l = localStorage.getItem('wp-lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'pl');
+      document.documentElement.setAttribute('lang', l);
+    })();
+  </script>
+  <link rel="stylesheet" href="site/css/styles.css" />
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="./">
+    <span class="brand-mark" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 2 L4 9 v11 a1 1 0 0 0 1 1 h5 v-6 h4 v6 h5 a1 1 0 0 0 1 -1 V9 z"/>
+        <path d="M9 13 c1.5 -2 4.5 -2 6 0" stroke-width="1.5"/>
+      </svg>
+    </span>
+    <span class="brand-text">
+      <span class="brand-title">Papierni Prądnickich</span>
+      <span class="brand-sub">Wspólnota Mieszkaniowa 72–82</span>
+    </span>
+  </a>
+  <nav class="site-nav">
+    <a href="news-index.html">Aktualności</a>
+    <a href="handbook.html">Strefa mieszkańca</a>
+    <a href="gallery.html">Galeria</a>
+  </nav>
+</header>
+
+<main class="not-found-page">
+  <section class="section">
+    <div class="not-found">
+      <p class="not-found-code" aria-hidden="true">404</p>
+      <h1 class="not-found-title" data-pl="Nie znaleźliśmy tej strony" data-en="Page not found">Nie znaleźliśmy tej strony</h1>
+      <p class="not-found-lead" data-pl="Adres mógł się zmienić, link mógł być nieaktualny, albo strona została usunięta. Spróbuj jednego z linków poniżej." data-en="The address may have changed, the link may be outdated, or the page may have been removed. Try one of the links below.">Adres mógł się zmienić, link mógł być nieaktualny, albo strona została usunięta. Spróbuj jednego z linków poniżej.</p>
+      <div class="not-found-actions">
+        <a class="btn btn-primary" href="./" data-pl="Strona główna" data-en="Home">Strona główna</a>
+        <a class="btn btn-ghost" href="news-index.html" data-pl="Wszystkie aktualności" data-en="All news">Wszystkie aktualności</a>
+      </div>
+      <ul class="not-found-links">
+        <li><a href="handbook.html" data-pl="Strefa mieszkańca i FAQ" data-en="Resident zone &amp; FAQ">Strefa mieszkańca i FAQ</a></li>
+        <li><a href="handbook.html#pogotowie" data-pl="Pogotowie konserwacyjne" data-en="Emergency maintenance">Pogotowie konserwacyjne</a></li>
+        <li><a href="handbook.html#alarmowe" data-pl="Numery alarmowe" data-en="Emergency numbers">Numery alarmowe</a></li>
+        <li><a href="gallery.html" data-pl="Galeria osiedla" data-en="Estate gallery">Galeria osiedla</a></li>
+      </ul>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p>
+      <strong>Wspólnota Mieszkaniowa Papierni Prądnickich 72, 74, 76, 78, 80, 82</strong><br/>
+      <span>ul. Papierni Prądnickich 72–82, Kraków</span>
+    </p>
+    <p class="footer-meta">
+      <span>© Wspólnota Papierni Prądnickich.</span>
+      <span>Strona prowadzona przez mieszkańców.</span>
+    </p>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var lang = document.documentElement.getAttribute('lang') || 'pl';
+    document.querySelectorAll('[data-' + lang + ']').forEach(function (el) {
+      var v = el.getAttribute('data-' + lang);
+      if (v) el.innerHTML = v;
+    });
+    if (lang === 'en') document.title = '404 — Page not found · Community of PP 72–82';
+  })();
+</script>
+
+<script src="site/js/pwa.js" defer></script>
+
+</body>
+</html>
