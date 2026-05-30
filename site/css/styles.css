@@ -158,7 +158,15 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 [data-theme="dark"]  .icon-sun  { display: block; }
 
 .lang-toggle .lang-code { font-weight: 600; font-size: .85rem; }
-.lang-toggle .lang-flag { font-size: 1rem; }
+.lang-toggle .lang-flag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+.lang-toggle .lang-flag svg { display: block; }
 
 /* ----- Hero ----- */
 .hero {

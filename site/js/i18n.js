@@ -35,7 +35,11 @@
     if (flag && code) {
       // Show the OTHER language (what clicking switches to)
       const other = currentLang === 'pl' ? 'en' : 'pl';
-      flag.textContent = other === 'pl' ? '🇵🇱' : '🇬🇧';
+      const flagSvg = {
+        pl: '<svg viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="7" fill="#fff"/><rect y="7" width="20" height="7" fill="#dc143c"/><rect x="0.5" y="0.5" width="19" height="13" fill="none" stroke="rgba(0,0,0,.15)" stroke-width="1"/></svg>',
+        en: '<svg viewBox="0 0 20 14" width="18" height="13" aria-hidden="true"><rect width="20" height="14" fill="#012169"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#fff" stroke-width="2.2"/><path d="M0 0 L20 14 M20 0 L0 14" stroke="#c8102e" stroke-width="1.2"/><path d="M10 0 V14 M0 7 H20" stroke="#fff" stroke-width="3.5"/><path d="M10 0 V14 M0 7 H20" stroke="#c8102e" stroke-width="2"/></svg>'
+      };
+      flag.innerHTML = flagSvg[other];
       code.textContent = other.toUpperCase();
     }
     document.dispatchEvent(new CustomEvent('i18n:changed', { detail: { lang: currentLang } }));
