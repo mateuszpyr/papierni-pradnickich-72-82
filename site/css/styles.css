@@ -3393,13 +3393,13 @@ body.search-open { overflow: hidden; }
 
 /* ===== Showcase History (Stara papiernia) ===== */
 .showcase--history {
-  background: linear-gradient(135deg, #f8f1e4 0%, #ede1c9 55%, #e3d3b1 100%);
-  color: #3a2d1a;
+  background: var(--bg);
+  color: var(--text);
   padding: clamp(4rem, 10vw, 8rem) 0;
 }
 [data-theme="dark"] .showcase--history {
-  background: linear-gradient(135deg, #2a2118 0%, #1d1610 60%, #15100a 100%);
-  color: #ede1c9;
+  background: var(--bg);
+  color: var(--text);
 }
 .showcase-history-bg {
   position: absolute;
@@ -3527,14 +3527,14 @@ body.search-open { overflow: hidden; }
   margin-top: 0.7rem;
   font-size: 0.7rem;
   letter-spacing: 0.04em;
-  color: #6b5536;
+  color: var(--text-soft);
   text-align: center;
   line-height: 1.35;
   font-style: normal;
 }
 .showcase-history-mark-cap em {
   font-style: italic;
-  color: #3a2d1a;
+  color: var(--text);
   font-weight: 600;
 }
 .showcase-history-mark-cap span {
@@ -3550,8 +3550,7 @@ body.search-open { overflow: hidden; }
     inset 0 0 0 1px rgba(212, 165, 116, 0.25);
   filter: sepia(0.20) contrast(0.95) brightness(0.95);
 }
-[data-theme="dark"] .showcase-history-mark-cap { color: #c9b896; }
-[data-theme="dark"] .showcase-history-mark-cap em { color: #f0e2c4; }
+
 
 @media (max-width: 860px) {
   .showcase-history-inner {
