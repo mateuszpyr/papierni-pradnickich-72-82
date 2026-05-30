@@ -2543,52 +2543,47 @@ body.search-open { overflow: hidden; }
   .hb-layout { grid-template-columns: 1fr; gap: 1.5rem; }
   .hb-sidebar {
     position: sticky;
-    top: var(--header-h, 72px);
+    top: calc(var(--header-h, 72px) + 8px);
     z-index: 20;
-    margin: 0 calc(-1 * clamp(1rem, 4vw, 2rem));
-    background: color-mix(in srgb, var(--bg) 92%, transparent);
+    background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
     backdrop-filter: saturate(140%) blur(10px);
     -webkit-backdrop-filter: saturate(140%) blur(10px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 4px 12px -8px rgba(0,0,0,0.15);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    box-shadow: 0 6px 20px -10px rgba(0,0,0,0.18);
   }
-  .hb-toc {
-    border: none;
-    padding: 0;
-  }
+  .hb-toc { border: none; padding: 0; }
   .hb-toc-title { display: none; }
   .hb-toc ol {
     display: flex;
     flex-wrap: nowrap;
-    gap: .4rem;
+    gap: .35rem;
     overflow-x: auto;
     scroll-snap-type: x proximity;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    padding: .55rem clamp(1rem, 4vw, 2rem);
+    padding: .4rem .55rem;
     margin: 0;
-    scroll-padding-inline: clamp(1rem, 4vw, 2rem);
+    scroll-padding-inline: .55rem;
   }
   .hb-toc ol::-webkit-scrollbar { display: none; }
   .hb-toc li { flex: 0 0 auto; scroll-snap-align: center; }
   .hb-toc a {
     margin-left: 0;
     border-left: none;
-    padding: .4rem .85rem;
+    padding: .35rem .8rem;
     border-radius: 999px;
-    background: var(--bg-elev);
-    border: 1px solid var(--border);
+    background: transparent;
     font-size: .82rem;
     white-space: nowrap;
     color: var(--text-soft);
-    transition: background .15s, color .15s, border-color .15s, transform .15s;
+    transition: background .15s, color .15s;
   }
-  .hb-toc a:hover { color: var(--text); border-color: var(--border-strong); }
+  .hb-toc a:hover { color: var(--text); background: var(--bg-alt); }
   .hb-toc a.active {
     border-left: none;
     background: var(--accent);
     color: var(--bg);
-    border-color: var(--accent);
     font-weight: 600;
   }
   .hb-defs-2col { grid-template-columns: max-content 1fr; }
