@@ -308,29 +308,44 @@
   (function(){
     const links = Array.from(document.querySelectorAll('.hb-toc a[href^="#"]'));
     if (!links.length) return;
+    const ol = document.querySelector('.hb-toc ol');
     const map = new Map();
     links.forEach(a => {
       const el = document.querySelector(a.getAttribute('href'));
       if (el) map.set(el, a);
     });
     let current = null;
+    let clickLock = 0;
+    const isMobile = () => window.matchMedia('(max-width: 860px)').matches;
+    const scrollPillIntoView = (a) => {
+      if (!ol || !isMobile()) return;
+      const olRect = ol.getBoundingClientRect();
+      const aRect = a.getBoundingClientRect();
+      const offset = (aRect.left + aRect.width / 2) - (olRect.left + olRect.width / 2);
+      ol.scrollBy({ left: offset, behavior: 'smooth' });
+    };
     const setActive = (a) => {
       if (current === a) return;
       links.forEach(l => l.classList.remove('active'));
       if (a) {
         a.classList.add('active');
-        if (window.matchMedia('(max-width: 860px)').matches) {
-          a.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-        }
+        scrollPillIntoView(a);
       }
       current = a;
     };
+    links.forEach(a => {
+      a.addEventListener('click', () => {
+        clickLock = Date.now() + 700;
+        setActive(a);
+      });
+    });
     const obs = new IntersectionObserver((entries) => {
+      if (Date.now() < clickLock) return;
       const visible = entries
         .filter(e => e.isIntersecting)
         .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
       if (visible.length) setActive(map.get(visible[0].target));
-    }, { rootMargin: '-96px 0px -60% 0px', threshold: 0 });
+    }, { rootMargin: '-30% 0px -55% 0px', threshold: 0 });
     map.forEach((_, el) => obs.observe(el));
   })();
 </script>
