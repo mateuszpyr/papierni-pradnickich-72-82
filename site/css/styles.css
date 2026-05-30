@@ -2213,6 +2213,12 @@ body.search-open { overflow: hidden; }
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+.search-item mark {
+  background: color-mix(in srgb, var(--accent) 28%, transparent);
+  color: inherit;
+  border-radius: 3px;
+  padding: 0 2px;
+}
 
 .hb-doc-address { line-height: 1.65; margin: .5rem 0; font-size: 1.05rem; }
 

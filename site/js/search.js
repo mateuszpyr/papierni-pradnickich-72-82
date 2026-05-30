@@ -99,7 +99,7 @@
       const lang = getLang();
       const items = [];
 
-      // news
+      // news (including markdown body for richer search)
       try {
         const idx = await fetch('news/items/index.json', { cache: 'no-cache' }).then((r) => r.json());
         const files = await Promise.all(
@@ -107,13 +107,23 @@
         );
         files.forEach((raw, i) => {
           if (!raw) return;
-          const fm = raw.match(/^---\s*([\s\S]*?)\s*---/);
+          const fm = raw.match(/^---\s*([\s\S]*?)\s*---\s*([\s\S]*)$/);
           if (!fm) return;
           const meta = {};
           fm[1].split('\n').forEach((line) => {
             const m = line.match(/^([a-zA-Z_]+):\s*'?([^']*)'?\s*$/);
             if (m) meta[m[1]] = m[2];
           });
+          const body = fm[2] || '';
+          // pick language block ::: pl / ::: en when present, else full body
+          const blockRe = new RegExp(':::\\s*' + (lang === 'en' ? 'en' : 'pl') + '\\s*([\\s\\S]*?):::', 'i');
+          const block = body.match(blockRe);
+          const bodyText = (block ? block[1] : body)
+            .replace(/```[\s\S]*?```/g, ' ')
+            .replace(/[#>*_`~\-]/g, ' ')
+            .replace(/\[([^\]]+)\]\([^)]*\)/g, '$1')
+            .replace(/\s+/g, ' ')
+            .trim();
           const title = (lang === 'en' ? meta.title_en : meta.title_pl) || meta.title_pl || idx[i];
           const lead  = (lang === 'en' ? meta.lead_en  : meta.lead_pl)  || '';
           const slug  = meta.slug || idx[i].replace(/\.md$/, '');
@@ -122,7 +132,8 @@
             title,
             excerpt: lead,
             url: 'news.html?slug=' + encodeURIComponent(slug),
-            hay: norm(title + ' ' + lead + ' ' + (meta.tag_pl || '') + ' ' + (meta.tag_en || '')),
+            hay: norm(title + ' ' + lead + ' ' + (meta.tag_pl || '') + ' ' + (meta.tag_en || '') + ' ' + bodyText),
+            body: bodyText,
           });
         });
       } catch (e) { /* ignore */ }
@@ -157,6 +168,36 @@
     return (s || '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]);
   }
 
+  function highlight(text, query) {
+    const safe = escapeHtml(text || '');
+    if (!query) return safe;
+    const nq = norm(query);
+    const nt = norm(text || '');
+    const idx = nt.indexOf(nq);
+    if (idx === -1) return safe;
+    // map indices: since norm only lowercases + strips diacritics (length preserved via NFD strip of combining marks),
+    // length differs only by combining marks. Safe enough for Latin-script content here — fall back to plain when lengths differ.
+    if (nt.length !== (text || '').length) return safe;
+    return escapeHtml(text.slice(0, idx)) +
+      '<mark>' + escapeHtml(text.slice(idx, idx + query.length)) + '</mark>' +
+      escapeHtml(text.slice(idx + query.length));
+  }
+
+  function buildExcerpt(item, query) {
+    const lead = item.excerpt || '';
+    const nq = norm(query);
+    if (lead && norm(lead).indexOf(nq) !== -1) return lead;
+    // fall back to body snippet around the match
+    const body = item.body || '';
+    if (!body) return lead;
+    const nb = norm(body);
+    const i = nb.indexOf(nq);
+    if (i === -1) return lead;
+    const start = Math.max(0, i - 40);
+    const end = Math.min(body.length, i + nq.length + 80);
+    return (start > 0 ? '…' : '') + body.slice(start, end) + (end < body.length ? '…' : '');
+  }
+
   function render(query) {
     const lang = getLang();
     const labels = t[lang];
@@ -184,9 +225,10 @@
       html += '<h3 class="search-group-title">' + labels.sections[k] + '</h3>';
       html += '<ul class="search-list">';
       groups[k].forEach((h) => {
+        const excerpt = buildExcerpt(h, query);
         html += '<li><a class="search-item" href="' + h.url + '">';
-        html +=   '<span class="search-item-title">' + escapeHtml(h.title) + '</span>';
-        if (h.excerpt) html += '<span class="search-item-excerpt">' + escapeHtml(h.excerpt) + '</span>';
+        html +=   '<span class="search-item-title">' + highlight(h.title, query) + '</span>';
+        if (excerpt) html += '<span class="search-item-excerpt">' + highlight(excerpt, query) + '</span>';
         html += '</a></li>';
       });
       html += '</ul></section>';
