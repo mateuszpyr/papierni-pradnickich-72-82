@@ -2270,10 +2270,19 @@ body.search-open { overflow: hidden; }
   grid-template-columns: max-content 1fr;
   gap: .55rem 1.5rem;
   margin: .5rem 0;
+  min-width: 0;
 }
 .hb-defs dt { color: var(--text-muted); font-size: .92rem; align-self: center; }
-.hb-defs dd { margin: 0; }
+.hb-defs dd { margin: 0; min-width: 0; }
+.hb-defs dd a { overflow-wrap: anywhere; word-break: break-word; }
 .hb-defs-2col { grid-template-columns: max-content 1fr max-content 1fr; gap: .55rem 1.5rem; }
+
+@media (max-width: 560px) {
+  .hb-defs,
+  .hb-defs-2col { grid-template-columns: 1fr; gap: .15rem .5rem; }
+  .hb-defs dt { font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; margin-top: .4rem; }
+  .hb-defs dt:first-of-type { margin-top: 0; }
+}
 
 .hb-doc-urgent {
   position: relative;
