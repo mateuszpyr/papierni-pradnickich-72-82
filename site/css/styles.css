@@ -68,6 +68,7 @@ body {
   background: var(--bg);
   -webkit-font-smoothing: antialiased;
   transition: background-color .3s ease, color .3s ease;
+  overflow-x: hidden;
 }
 img { max-width: 100%; display: block; }
 a { color: var(--accent); text-decoration: none; transition: color .2s; }
@@ -1121,6 +1122,8 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   line-height: 1.75;
   color: var(--text-soft);
   margin-top: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .news-detail-body p { margin: 0 0 1.1rem; }
 .news-detail-body p:last-child { margin-bottom: 0; }
