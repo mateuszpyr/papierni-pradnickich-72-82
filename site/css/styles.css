@@ -2751,8 +2751,54 @@ body.search-open { overflow: hidden; }
   align-items: start;
 }
 @media (max-width: 900px) {
-  .history-layout { grid-template-columns: 1fr; gap: 1.5rem; }
-  .history-sidebar { position: static; }
+  .history-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+  .history-sidebar {
+    position: sticky;
+    top: calc(var(--header-h, 72px) + 8px);
+    z-index: 20;
+    background: color-mix(in srgb, var(--bg-elev) 88%, transparent);
+    backdrop-filter: saturate(140%) blur(10px);
+    -webkit-backdrop-filter: saturate(140%) blur(10px);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    box-shadow: 0 6px 20px -10px rgba(0,0,0,0.18);
+    padding: 0;
+  }
+  .history-toc { padding: 0; }
+  .history-toc-title { display: none; }
+  .history-toc ol {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: .35rem;
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: .4rem .55rem;
+    margin: 0;
+    scroll-padding-inline: .55rem;
+    border-left: none;
+  }
+  .history-toc ol::-webkit-scrollbar { display: none; }
+  .history-toc li { flex: 0 0 auto; scroll-snap-align: center; }
+  .history-toc a {
+    margin-left: 0;
+    padding: .35rem .8rem;
+    border-left: none;
+    border-radius: 999px;
+    background: transparent;
+    font-size: .82rem;
+    white-space: nowrap;
+    color: var(--text-soft);
+  }
+  .history-toc a:hover { color: var(--text); background: var(--bg-alt); }
+  .history-toc a.active {
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+    border-left-color: transparent;
+  }
+  .history-section { scroll-margin-top: calc(var(--header-h, 72px) + 80px); }
 }
 
 /* Sidebar TOC */
@@ -2791,7 +2837,7 @@ body.search-open { overflow: hidden; }
 
 /* Doc / sections */
 .history-doc { max-width: 720px; }
-.history-section { margin: 0 0 3.5rem; }
+.history-section { margin: 0 0 3.5rem; scroll-margin-top: calc(var(--header-h, 72px) + 16px); }
 .history-section h2 {
   font-family: 'Cormorant Garamond', Georgia, serif;
   font-size: clamp(1.6rem, 2.6vw, 2.1rem);
