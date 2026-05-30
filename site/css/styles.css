@@ -3584,3 +3584,152 @@ body.search-open { overflow: hidden; }
     transition: none !important;
   }
 }
+
+/* ===== Showcase history mini timeline ===== */
+.showcase-history-axis {
+  list-style: none;
+  margin: 0 0 2rem;
+  padding: 1.4rem 0 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  position: relative;
+  max-width: 540px;
+}
+.showcase-history-axis::before {
+  content: "";
+  position: absolute;
+  top: calc(1.4rem + 5px);
+  left: 8%;
+  right: 8%;
+  height: 2px;
+  background: linear-gradient(90deg, rgba(138, 90, 31, 0.0) 0%, rgba(138, 90, 31, 0.55) 15%, rgba(138, 90, 31, 0.55) 85%, rgba(138, 90, 31, 0.0) 100%);
+  z-index: 0;
+}
+[data-theme="dark"] .showcase-history-axis::before {
+  background: linear-gradient(90deg, rgba(212, 165, 116, 0.0) 0%, rgba(212, 165, 116, 0.5) 15%, rgba(212, 165, 116, 0.5) 85%, rgba(212, 165, 116, 0.0) 100%);
+}
+.axis-step {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding-top: 1rem;
+  gap: 0.3rem;
+}
+.axis-step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #f8f1e4;
+  border: 2px solid #8a5a1f;
+  box-shadow: 0 0 0 4px rgba(138, 90, 31, 0.12);
+  z-index: 1;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+[data-theme="dark"] .axis-step::before {
+  background: #2a2118;
+  border-color: #d4a574;
+  box-shadow: 0 0 0 4px rgba(212, 165, 116, 0.12);
+}
+.axis-step--mark::before {
+  width: 16px;
+  height: 16px;
+  top: -2px;
+  background: #8a5a1f;
+  box-shadow: 0 0 0 5px rgba(138, 90, 31, 0.20);
+}
+[data-theme="dark"] .axis-step--mark::before {
+  background: #d4a574;
+  box-shadow: 0 0 0 5px rgba(212, 165, 116, 0.20);
+}
+.axis-year {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #3a2d1a;
+  line-height: 1;
+}
+[data-theme="dark"] .axis-year { color: #f0e2c4; }
+.axis-step--mark .axis-year {
+  color: #6b3f0a;
+  font-size: 1.4rem;
+}
+[data-theme="dark"] .axis-step--mark .axis-year { color: #f4d49a; }
+.axis-year--now {
+  font-style: italic;
+  font-size: 1.1rem;
+}
+.axis-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #6b5536;
+  line-height: 1.2;
+}
+[data-theme="dark"] .axis-label { color: #c9b896; }
+
+@media (max-width: 560px) {
+  .showcase-history-axis {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 1.2rem;
+    max-width: 360px;
+  }
+  .showcase-history-axis::before { display: none; }
+  .axis-step { padding-top: 0; align-items: flex-start; text-align: left; padding-left: 22px; }
+  .axis-step::before { left: 0; top: 6px; transform: none; }
+  .axis-step--mark::before { top: 4px; }
+}
+
+/* Reveal: axis dots pop in sequentially after lead */
+.showcase--history.reveal .showcase-history-axis {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.showcase--history.reveal.is-revealed .showcase-history-axis {
+  opacity: 1;
+  transform: none;
+  transition-delay: 0.55s;
+}
+.showcase--history.reveal .axis-step {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.showcase--history.reveal.is-revealed .axis-step:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.70s; }
+.showcase--history.reveal.is-revealed .axis-step:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.85s; }
+.showcase--history.reveal.is-revealed .axis-step:nth-child(3) { opacity: 1; transform: none; transition-delay: 1.00s; }
+.showcase--history.reveal.is-revealed .axis-step:nth-child(4) { opacity: 1; transform: none; transition-delay: 1.15s; }
+.showcase--history.reveal.is-revealed .axis-step--mark::before {
+  animation: axisMarkPulse 0.6s 1.20s cubic-bezier(0.22, 1, 0.36, 1);
+}
+@keyframes axisMarkPulse {
+  0% { transform: translateX(-50%) scale(1); }
+  50% { transform: translateX(-50%) scale(1.5); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .showcase--history.reveal .showcase-history-axis,
+  .showcase--history.reveal .axis-step {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Adjust text reveal stagger now that axis sits between lead and link */
+.showcase--history.reveal.is-revealed .showcase-history-text > *:nth-child(5) {
+  opacity: 1;
+  transform: none;
+  transition-delay: 1.25s;
+}
