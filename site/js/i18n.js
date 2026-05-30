@@ -16,6 +16,11 @@
       const val = get(key);
       if (typeof val === 'string') el.textContent = val;
     });
+    document.querySelectorAll('[data-i18n-html]').forEach((el) => {
+      const key = el.getAttribute('data-i18n-html');
+      const val = get(key);
+      if (typeof val === 'string') el.innerHTML = val;
+    });
     document.querySelectorAll('[data-i18n-attr]').forEach((el) => {
       // format: "attr:key;attr2:key2"
       const spec = el.getAttribute('data-i18n-attr');
