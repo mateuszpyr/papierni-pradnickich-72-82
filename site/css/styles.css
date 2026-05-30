@@ -2540,7 +2540,7 @@ body.search-open { overflow: hidden; }
 .hb-faq-body a:hover { text-decoration: underline; }
 
 @media (max-width: 860px) {
-  .hb-layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  .hb-layout { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
   .hb-sidebar {
     position: sticky;
     top: calc(var(--header-h, 72px) + 8px);
