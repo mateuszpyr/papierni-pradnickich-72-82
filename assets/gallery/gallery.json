@@ -1,15 +1,13 @@
 {
   "albums": [
     {
-      "folder": "test-album",
-      "date": "2025-05-29",
-      "title_pl": "Album przykładowy",
-      "title_en": "Sample album",
-      "description_pl": "Pojedyncze zdjęcie testowe.",
-      "description_en": "Single test photo.",
-      "images": [
-        { "file": "01.jpg", "caption_pl": "Pierwsze zdjęcie", "caption_en": "First photo" }
-      ]
+      "folder": "osiedle",
+      "date": "2026-05-30",
+      "title_pl": "Nasze osiedle",
+      "title_en": "Our neighbourhood",
+      "description_pl": "Budynki, otoczenie i codzienne życie wspólnoty.",
+      "description_en": "Buildings, surroundings and everyday life of the community.",
+      "images": []
     }
   ]
 }
