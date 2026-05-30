@@ -271,10 +271,10 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   /* Cinematic dark gradient — deeper at the bottom to ground the hero and ease the transition into the next section. */
   background:
     linear-gradient(180deg,
-      rgba(0,0,0,.35) 0%,
-      rgba(0,0,0,.18) 35%,
-      rgba(0,0,0,.45) 75%,
-      rgba(0,0,0,.85) 100%);
+      rgba(0,0,0,.55) 0%,
+      rgba(0,0,0,.35) 35%,
+      rgba(0,0,0,.60) 75%,
+      rgba(0,0,0,.92) 100%);
 }
 
 .hero-content {
@@ -2106,6 +2106,32 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 .footer-brand { margin: 0; color: var(--text); font-size: .95rem; }
 .footer-meta  { margin: 0; color: var(--text-muted); font-size: .85rem; }
 .footer-meta span { display: block; }
+
+.footer-social {
+  display: inline-flex;
+  align-items: center;
+  gap: .6rem;
+}
+.footer-social a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  transition: background .2s, color .2s, transform .2s, border-color .2s;
+}
+.footer-social a:hover {
+  transform: translateY(-2px);
+  color: #fff;
+  border-color: transparent;
+}
+.footer-social a[aria-label="Facebook"]:hover { background: #1877f2; }
+.footer-social a[aria-label="Messenger"]:hover { background: #0084ff; }
+.footer-social svg { width: 22px; height: 22px; }
 
 /* ----- Reduced motion ----- */
 @media (prefers-reduced-motion: reduce) {
