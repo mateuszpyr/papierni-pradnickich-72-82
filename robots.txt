@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mateuszpyr.github.io/papierni-pradnickich-72-82/sitemap.xml
+Sitemap: https://wspolnota.hrynie.com/papierni-pradnickich-72-82/sitemap.xml

@@ -19,12 +19,12 @@ messenger_link: ''
 
 ::: pl
 
-Aktualnie Zarządca sprawdza, czy ja (Robert Hryniewicz) mogę być reprezentantem dla obu wspólnot. Zarządca zadeklarował również, że wraz z uchwałą dającą mi możliwość reprezentowania Wspólnoty przed Ubezpieczycielem OC będzie roznosił do skrzynek Uchwałę nr 3/2026 (PP80-82), tak by przyspieszyć pracę nad kompensatorem i byśmy mogli zgłosić się do OC o zadośćuczynienie ze względu na rażące zaniedbanie Zarządcy.
+Aktualnie Zarządca przygotowuje Uchwałę na mocy które Robert Hryniewicz będzie reprezentantem dla obu wspólnot. Zarządca zadeklarował również, że wraz z uchwałą dającą mi możliwość reprezentowania Wspólnoty przed Ubezpieczycielem OC będzie roznosił do skrzynek Uchwałę nr 3/2026 (PP80-82), tak by przyspieszyć pracę nad kompensatorem i byśmy mogli zgłosić się do OC o zadośćuczynienie ze względu na rażące zaniedbanie Zarządcy.
 
 :::
 
 ::: en
 
-The current Property Manager is verifying whether I (Robert Hryniewicz) may act as representative for both communities. The Manager has also declared that along with the resolution authorising me to represent the Community before the Liability Insurer, Resolution 3/2026 (PP80-82) will be delivered to residents' mailboxes — in order to speed up the work on the compensator and allow us to file a claim against the OC insurance for damages due to gross negligence by the Manager.
+The Property Manager is currently drafting a resolution designating Robert Hryniewicz as the representative for both communities. The Property Manager has also stated that, along with the resolution granting me the authority to represent the Community before the liability insurance provider, he will distribute Resolution No. 3/2026 (PP80-82) to mailboxes, in order to expedite work on the compensation fund and so that we may file a claim with the liability insurer for compensation due to the Administrator’s gross negligence.
 
 :::
