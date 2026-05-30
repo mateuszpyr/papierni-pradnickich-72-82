@@ -2123,6 +2123,13 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 /* ----- Small phones ----- */
 @media (max-width: 480px) {
   html, body { overflow-x: clip; }
+  .site-header { padding: .5rem .75rem; gap: .35rem; }
+  .brand { gap: .5rem; }
+  .brand-logo { width: 32px; height: 32px; }
+  .brand-name { font-size: .95rem; }
+  .site-nav { gap: .5rem .8rem; }
+  .site-nav a { font-size: .78rem; padding: .15rem .25rem; }
+  .header-tools { gap: .25rem; }
   .cta-section { padding: 3rem 1rem; }
   .cta-card { padding: 1.75rem 1.25rem; }
   .cta-stats { grid-template-columns: 1fr; }
