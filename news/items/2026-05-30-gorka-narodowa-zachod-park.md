@@ -34,6 +34,8 @@ Masz trzy możliwości:
 - **E-mailem** — wypełniony, wydrukowany, podpisany i zeskanowany formularz na adres: [wnioski-bp@um.krakow.pl](mailto:wnioski-bp@um.krakow.pl)
 - **Papierowo** — zaniesienie na dziennik podawczy lub wysyłka pocztą
 
+> **Wskazówka:** jeśli wypełniasz wniosek elektronicznie, możesz złożyć podpis kwalifikowany przez **mObywatela** — nie trzeba wtedy drukować i skanować.
+
 Szczegółowe informacje: [bip.krakow.pl/?dok_id=251821](https://www.bip.krakow.pl/?dok_id=251821)
 
 ## Ważne — właściwy formularz
@@ -98,6 +100,8 @@ You have three options:
 - **Online** — via the City portal
 - **By e-mail** — fill in, print, sign and scan the form, then send to: [wnioski-bp@um.krakow.pl](mailto:wnioski-bp@um.krakow.pl)
 - **On paper** — deliver to the City Office or send by post
+
+> **Tip:** if you fill the application electronically, you can sign it with a qualified signature via **mObywatel** — no need to print and scan.
 
 Details: [bip.krakow.pl/?dok_id=251821](https://www.bip.krakow.pl/?dok_id=251821)
 
