@@ -114,31 +114,45 @@
 
   async function buildHistoryEntries(lang) {
     let h = {};
+    let w = {};
     try {
       const i18n = await fetch('i18n/' + (lang === 'en' ? 'en' : 'pl') + '.json', { cache: 'no-cache' }).then((r) => r.json());
       h = (i18n && i18n.history) || {};
+      w = (h && h.wit) || {};
     } catch (e) { /* fall back to static titles below */ }
 
     const stripHtml = (s) => (s || '').replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim();
-    const get = (...keys) => keys.map((k) => stripHtml(h[k])).filter(Boolean).join(' ');
+    const get = (src, ...keys) => keys.map((k) => stripHtml(src[k])).filter(Boolean).join(' ');
 
     const fallbacks = lang === 'en'
-      ? { root: 'History of the estate', toc1: 'Where does the name come from?', toc2: 'Timeline', toc3: 'First paper mill', toc4: 'Jan Haller paper mill', toc5: 'Prądnik bread', toc6: 'Today', toc7: 'Sources' }
-      : { root: 'Historia osiedla — Stara papiernia', toc1: 'Skąd nazwa?', toc2: 'Oś czasu', toc3: 'Pierwszy młyn papierniczy', toc4: 'Papiernia Jana Hallera', toc5: 'Chleb prądnicki', toc6: 'Dzisiaj', toc7: 'Źródła' };
+      ? { root: 'History of the estate', toc1: 'Where does the name come from?', toc2: 'Timeline', toc3: 'First paper mill', toc4: 'Jan Haller paper mill', toc5: 'Prądnik bread', toc6: 'Today', toc7: 'Sources',
+          witRoot: 'Witkowice — neighbour across the river', witToc1: 'Witkowice Forest Park', witToc2: 'Village timeline', witToc3: 'St. Mary Magdalene Chapel', witToc4: 'Powder magazine, 1927 blast', witToc5: 'How to walk there', witToc6: 'Sources' }
+      : { root: 'Historia osiedla — Stara papiernia', toc1: 'Skąd nazwa?', toc2: 'Oś czasu', toc3: 'Pierwszy młyn papierniczy', toc4: 'Papiernia Jana Hallera', toc5: 'Chleb prądnicki', toc6: 'Dzisiaj', toc7: 'Źródła',
+          witRoot: 'Witkowice — sąsiad zza rzeki', witToc1: 'Park Leśny Witkowice', witToc2: 'Oś czasu wsi', witToc3: 'Kaplica św. Marii Magdaleny', witToc4: 'Prochownia i wybuch 1927', witToc5: 'Jak dojść z osiedla', witToc6: 'Źródła' };
 
-    const sections = [
-      { hash: '',           title: stripHtml(h.title || fallbacks.root) + (h.eyebrow ? ' — ' + stripHtml(h.eyebrow) : ''), keys: ['eyebrow', 'title', 'lead', 'pill1', 'pill2', 'pill3'] },
-      { hash: '#nazwa',     title: stripHtml(h.toc1) || fallbacks.toc1,                  keys: ['h_nazwa', 'p_nazwa1', 'p_nazwa2', 'toc1'] },
-      { hash: '#os-czasu',  title: stripHtml(h.toc2) || fallbacks.toc2,                  keys: ['h_oscz', 'toc2', 'tl1_y', 'tl1_h', 'tl1_p', 'tl2_y', 'tl2_h', 'tl2_p', 'tl3_y', 'tl3_h', 'tl3_p', 'tl4_y', 'tl4_h', 'tl4_p', 'tl5_y', 'tl5_h', 'tl5_p', 'tl6_y', 'tl6_h', 'tl6_p'] },
-      { hash: '#mlyn-1491', title: stripHtml(h.toc3) || fallbacks.toc3,                  keys: ['h_mlyn', 'q_text', 'q_cite', 'p_mlyn', 'toc3'] },
-      { hash: '#haller',    title: stripHtml(h.toc4) || fallbacks.toc4,                  keys: ['h_haller', 'p_haller_box', 'p_haller', 'toc4'] },
-      { hash: '#chleb',     title: stripHtml(h.toc5) || fallbacks.toc5,                  keys: ['h_chleb', 'p_chleb1', 'p_chleb_aside', 'toc5'] },
-      { hash: '#dzis',      title: stripHtml(h.toc6) || fallbacks.toc6,                  keys: ['h_dzis', 'p_dzis1', 'p_dzis2', 'toc6'] },
-      { hash: '#zrodla',    title: stripHtml(h.toc7) || fallbacks.toc7,                  keys: ['h_zrodla', 'src1_note', 'src2_note', 'license', 'toc7'] },
+    const chapter1 = [
+      { hash: '',           title: stripHtml(h.title || fallbacks.root) + (h.eyebrow ? ' — ' + stripHtml(h.eyebrow) : ''), src: h, keys: ['eyebrow', 'title', 'lead', 'pill1', 'pill2', 'pill3'] },
+      { hash: '#nazwa',     title: stripHtml(h.toc1) || fallbacks.toc1, src: h, keys: ['h_nazwa', 'p_nazwa1', 'p_nazwa2', 'toc1'] },
+      { hash: '#os-czasu',  title: stripHtml(h.toc2) || fallbacks.toc2, src: h, keys: ['h_oscz', 'toc2', 'tl1_y', 'tl1_h', 'tl1_p', 'tl2_y', 'tl2_h', 'tl2_p', 'tl3_y', 'tl3_h', 'tl3_p', 'tl4_y', 'tl4_h', 'tl4_p', 'tl5_y', 'tl5_h', 'tl5_p', 'tl6_y', 'tl6_h', 'tl6_p'] },
+      { hash: '#mlyn-1491', title: stripHtml(h.toc3) || fallbacks.toc3, src: h, keys: ['h_mlyn', 'q_text', 'q_cite', 'p_mlyn', 'toc3'] },
+      { hash: '#haller',    title: stripHtml(h.toc4) || fallbacks.toc4, src: h, keys: ['h_haller', 'p_haller_box', 'p_haller', 'toc4'] },
+      { hash: '#chleb',     title: stripHtml(h.toc5) || fallbacks.toc5, src: h, keys: ['h_chleb', 'p_chleb1', 'p_chleb_aside', 'toc5'] },
+      { hash: '#dzis',      title: stripHtml(h.toc6) || fallbacks.toc6, src: h, keys: ['h_dzis', 'p_dzis1', 'p_dzis2', 'toc6'] },
+      { hash: '#zrodla',    title: stripHtml(h.toc7) || fallbacks.toc7, src: h, keys: ['h_zrodla', 'src1_note', 'src2_note', 'license', 'toc7'] },
     ];
 
-    return sections.map((s) => {
-      const text = get(...s.keys);
+    const chapter2 = [
+      { hash: '#witkowice',     title: stripHtml(w.title || fallbacks.witRoot) + (w.eyebrow ? ' — ' + stripHtml(w.eyebrow) : ''), src: w, keys: ['eyebrow', 'title', 'lead', 'pill1', 'pill2', 'pill3'] },
+      { hash: '#wit-park',      title: stripHtml(w.toc1) || fallbacks.witToc1, src: w, keys: ['h_park', 'p_park1', 'p_park2', 'q_park', 'q_park_cite', 'p_park3', 'toc1'] },
+      { hash: '#wit-czasu',     title: stripHtml(w.toc2) || fallbacks.witToc2, src: w, keys: ['h_czasu', 'toc2', 'tl1_y', 'tl1_h', 'tl1_p', 'tl2_y', 'tl2_h', 'tl2_p', 'tl3_y', 'tl3_h', 'tl3_p', 'tl4_y', 'tl4_h', 'tl4_p', 'tl5_y', 'tl5_h', 'tl5_p', 'tl6_y', 'tl6_h', 'tl6_p'] },
+      { hash: '#wit-kaplica',   title: stripHtml(w.toc3) || fallbacks.witToc3, src: w, keys: ['h_kaplica', 'p_kaplica_box', 'p_kaplica1', 'p_kaplica_aside', 'toc3'] },
+      { hash: '#wit-prochownia',title: stripHtml(w.toc4) || fallbacks.witToc4, src: w, keys: ['h_prochownia', 'p_prochownia1', 'p_prochownia2', 'q_prochownia', 'q_prochownia_cite', 'toc4'] },
+      { hash: '#wit-dojsc',     title: stripHtml(w.toc5) || fallbacks.witToc5, src: w, keys: ['h_dojsc', 'p_dojsc1', 'li_dojsc1', 'li_dojsc2', 'li_dojsc3', 'li_dojsc4', 'p_dojsc_aside', 'h_zabrac', 'li_zabrac1', 'li_zabrac2', 'li_zabrac3', 'toc5'] },
+      { hash: '#wit-zrodla',    title: stripHtml(w.toc6) || fallbacks.witToc6, src: w, keys: ['h_zrodla', 'src1_note', 'src2_note', 'src3_note', 'license', 'toc6'] },
+    ];
+
+    return [...chapter1, ...chapter2].map((s) => {
+      const text = get(s.src, ...s.keys);
       return {
         kind: 'history',
         title: s.title,

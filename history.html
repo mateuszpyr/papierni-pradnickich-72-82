@@ -33,6 +33,22 @@
       document.documentElement.setAttribute('data-theme', t);
       var l = localStorage.getItem('wp-lang') || (navigator.language && navigator.language.startsWith('en') ? 'en' : 'pl');
       document.documentElement.setAttribute('lang', l);
+      var h = (location.hash || '').replace(/^#/, '');
+      if (h) {
+        var ch = (h.indexOf('wit-') === 0) ? 'witkowice' : h;
+        // sanitize: only safe identifier characters
+        if (/^[a-z0-9_-]+$/i.test(ch)) {
+          document.documentElement.setAttribute('data-book-init', ch);
+          var s = document.createElement('style');
+          // Scope all rules under [data-book-init="X"] so removing the attribute disables them
+          s.textContent =
+            '[data-book-init="' + ch + '"] .book-page[data-chapter]{display:none!important}' +
+            '[data-book-init="' + ch + '"] .book-page[data-chapter="' + ch + '"]{display:block!important}' +
+            '[data-book-init="' + ch + '"] .book-tab[data-chapter]{background:var(--bg-alt);color:var(--muted)}' +
+            '[data-book-init="' + ch + '"] .book-tab[data-chapter="' + ch + '"]{background:linear-gradient(180deg,var(--bg-elev) 0%,color-mix(in srgb,var(--accent) 10%,var(--bg)) 100%);color:var(--accent)}';
+          document.head.appendChild(s);
+        }
+      }
     })();
   </script>
   <link rel="stylesheet" href="site/css/styles.css" />
@@ -70,6 +86,30 @@
 </header>
 
 <main class="page history-page">
+
+  <div class="book-stage" id="bookStage">
+    <div class="book-tabs-wrap">
+    <button type="button" class="book-tabs-arrow book-tabs-arrow--left" id="bookTabsLeft" aria-label="Przewiń zakładki w lewo">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 5 8 12 15 19"/></svg>
+    </button>
+    <button type="button" class="book-tabs-arrow book-tabs-arrow--right" id="bookTabsRight" aria-label="Przewiń zakładki w prawo">
+      <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 5 16 12 9 19"/></svg>
+    </button>
+    <nav class="book-tabs" role="tablist" aria-label="Rozdziały księgi">
+      <button class="book-tab is-active" type="button" role="tab" aria-selected="true" data-chapter="papiernia">
+        <span class="book-tab-num">I</span>
+        <span class="book-tab-title" data-i18n="history.book.tab1">Papierniczy Prądnik</span>
+      </button>
+      <button class="book-tab" type="button" role="tab" aria-selected="false" data-chapter="witkowice">
+        <span class="book-tab-num">II</span>
+        <span class="book-tab-title" data-i18n="history.book.tab2">Witkowice — sąsiad zza rzeki</span>
+      </button>
+    </nav>
+    </div>
+
+    <div class="book-pager" id="bookPager">
+
+      <article class="book-page is-active" data-chapter="papiernia" aria-labelledby="bookTabPapiernia">
 
   <header class="history-hero">
     <div class="history-hero-inner">
@@ -118,7 +158,7 @@
 
     <aside class="history-sidebar">
       <nav class="history-toc" aria-label="Spis treści">
-        <p class="history-toc-title" data-i18n="history.tocTitle">W tym artykule</p>
+        <p class="history-toc-title" data-i18n="history.tocTitle">W tym rozdziale</p>
         <ol>
           <li><a href="#nazwa" data-i18n="history.toc1">Skąd nazwa?</a></li>
           <li><a href="#os-czasu" data-i18n="history.toc2">Oś czasu</a></li>
@@ -265,6 +305,235 @@
 
     </article>
   </div>
+      </article>
+
+      <article class="book-page" data-chapter="witkowice" aria-hidden="true" hidden>
+
+        <header class="history-hero history-hero--witkowice">
+          <div class="history-hero-inner">
+            <span class="history-eyebrow" data-i18n="history.wit.eyebrow">Sąsiad zza rzeki</span>
+            <h1 class="history-title" data-i18n="history.wit.title">Witkowice — wieś po drugiej stronie Białuchy</h1>
+            <p class="history-lead" data-i18n="history.wit.lead">
+              Siedem wieków historii tuż za naszą ulicą. Nazwa pamięta XIII-wiecznego krakowskiego proboszcza, w środku stoi ośmioboczna kaplica z 1677 roku, a w 1927 prochownia austriackiej twierdzy wyleciała w powietrze tak głośno, że słyszał ją cały Kraków.
+            </p>
+            <div class="history-meta">
+              <span class="history-pill" data-i18n="history.wit.pill1">Wieś od XIII w.</span>
+              <span class="history-pill" data-i18n="history.wit.pill2">Białucha · Bibiczanka</span>
+              <span class="history-pill" data-i18n="history.wit.pill3">Twierdza Kraków</span>
+            </div>
+          </div>
+          <div class="history-hero-media history-hero-media--static" aria-hidden="true">
+            <div class="history-hero-media-fallback">
+              <svg viewBox="0 0 220 220" width="100%" height="100%">
+                <defs>
+                  <pattern id="leafPattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M20 6 q12 6 0 28 q-12 -22 0 -28 z" fill="currentColor" opacity="0.18"/>
+                  </pattern>
+                  <linearGradient id="forestGrad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="currentColor" stop-opacity="0.05"/>
+                    <stop offset="100%" stop-color="currentColor" stop-opacity="0.25"/>
+                  </linearGradient>
+                </defs>
+                <rect width="220" height="220" fill="url(#forestGrad)"/>
+                <rect width="220" height="220" fill="url(#leafPattern)"/>
+                <g stroke="currentColor" stroke-width="2" fill="none" opacity="0.55">
+                  <path d="M40 200 L46 90 M46 90 L36 70 M46 90 L58 75 M46 90 L52 60"/>
+                  <path d="M110 210 L116 70 M116 70 L100 50 M116 70 L130 55 M116 70 L122 40"/>
+                  <path d="M180 205 L186 95 M186 95 L172 78 M186 95 L198 80"/>
+                </g>
+                <path d="M0 180 Q60 165 110 175 T220 170" stroke="currentColor" stroke-width="1.2" fill="none" opacity="0.4"/>
+              </svg>
+            </div>
+          </div>
+        </header>
+
+        <div class="history-layout">
+
+          <aside class="history-sidebar">
+            <nav class="history-toc" aria-label="Spis treści: Witkowice">
+              <p class="history-toc-title" data-i18n="history.wit.tocTitle">W tym rozdziale</p>
+              <ol>
+                <li><a href="#wit-nazwa" data-i18n="history.wit.toc1">Skąd nazwa Witkowice</a></li>
+                <li><a href="#wit-czasu" data-i18n="history.wit.toc2">Oś czasu wsi</a></li>
+                <li><a href="#wit-kaplica" data-i18n="history.wit.toc3">Kaplica św. Marii Magdaleny</a></li>
+                <li><a href="#wit-prochownia" data-i18n="history.wit.toc4">Prochownia i wybuch 1927</a></li>
+                <li><a href="#wit-stara" data-i18n="history.wit.toc5">Stara wieś dziś</a></li>
+                <li><a href="#wit-park" data-i18n="history.wit.toc6">Park Leśny Witkowice</a></li>
+                <li><a href="#wit-zrodla" data-i18n="history.wit.toc7">Źródła</a></li>
+              </ol>
+            </nav>
+          </aside>
+
+          <article class="history-doc">
+
+            <section id="wit-nazwa" class="history-section">
+              <h2 data-i18n="history.wit.h_nazwa">Skąd nazwa Witkowice</h2>
+              <p class="history-drop" data-i18n-html="history.wit.p_nazwa1">
+                <span class="history-dropcap">N</span>azwa wsi wskazuje na konkretną osobę — krakowskiego proboszcza <strong>Wita</strong> (łac. <i>Vitus</i>), żyjącego w <strong>XIII wieku</strong>. To on przekazuje tutejsze ziemie kapitule krakowskiej, a wieś, która z czasem powstaje wokół tego nadania, zaczyna nosić jego imię w formie patronimicznej: <em>Wit-kowice</em> — „[wieś] ludzi Wita”.
+              </p>
+              <p data-i18n="history.wit.p_nazwa2">
+                Jan Długosz, kanonik krakowski i kronikarz, odnotowuje Witkowice w <i>Liber beneficiorum</i> jako wieś należącą do kapituły. Od tamtej pory aż do XX wieku Witkowice pozostają wsią — niezależną osadą rolniczą, oddzieloną od Krakowa pasem pól i doliną Białuchy (Prądnika).
+              </p>
+              <p class="history-aside" data-i18n="history.wit.p_nazwa_aside">
+                Sąsiednie miejscowości — Bibice, Górka Narodowa, Tonie — mają podobnie stare metryki. Cały ten pas wsi na północ od Krakowa rośnie wokół średniowiecznych nadań kościelnych i królewskich.
+              </p>
+            </section>
+
+            <section id="wit-czasu" class="history-section">
+              <h2 data-i18n="history.wit.h_czasu">Oś czasu wsi Witkowice</h2>
+              <ol class="timeline">
+                <li class="timeline-item timeline-highlight">
+                  <span class="timeline-year" data-i18n="history.wit.tl1_y">XIII w.</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl1_h">Pierwsza wzmianka u Długosza</h3>
+                    <p data-i18n-html="history.wit.tl1_p">Krakowski proboszcz <strong>Wit</strong> (łac. <i>Vitus</i>) przekazuje tutejsze ziemie kapitule krakowskiej. Stąd nazwa: <em>Wit-kowice</em>.</p>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-year" data-i18n="history.wit.tl2_y">1464</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl2_h">Prawo magdeburskie</h3>
+                    <p data-i18n="history.wit.tl2_p">Kazimierz IV Jagiellończyk przenosi Witkowice na prawo magdeburskie — wieś zyskuje formalną organizację samorządową.</p>
+                  </div>
+                </li>
+                <li class="timeline-item timeline-highlight">
+                  <span class="timeline-year" data-i18n="history.wit.tl3_y">~1677</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl3_h">Kaplica św. Marii Magdaleny</h3>
+                    <p data-i18n-html="history.wit.tl3_p">W ogrodzie dworu kapituły krakowskiej powstaje murowana, ośmioboczna <strong>kaplica</strong>. Stoi do dziś — między starymi uliczkami i blokami z lat 90.</p>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-year" data-i18n="history.wit.tl4_y">XIX w.</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl4_h">Twierdza Kraków</h3>
+                    <p data-i18n="history.wit.tl4_p">Witkowice trafiają do zewnętrznego pierścienia umocnień austriackiej Twierdzy Kraków. Powstają wały ziemne i prochownia.</p>
+                  </div>
+                </li>
+                <li class="timeline-item timeline-highlight">
+                  <span class="timeline-year" data-i18n="history.wit.tl5_y">1927</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl5_h">Eksplozja prochowni</h3>
+                    <p data-i18n="history.wit.tl5_p">Prochownia wylatuje w powietrze w jednym z najgłośniejszych wybuchów międzywojennego Krakowa. Słychać go w całym mieście, znaczna część zabudowy wsi zostaje zniszczona.</p>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <span class="timeline-year" data-i18n="history.wit.tl6_y">1941</span>
+                  <div class="timeline-body">
+                    <h3 data-i18n="history.wit.tl6_h">Włączenie do Krakowa</h3>
+                    <p data-i18n="history.wit.tl6_p">Witkowice formalnie stają się częścią miasta. W latach 90. nad doliną Prądnika rośnie osiedle Witkowice Nowe — między starą wsią a doliną rzeki.</p>
+                  </div>
+                </li>
+              </ol>
+            </section>
+
+            <section id="wit-kaplica" class="history-section">
+              <h2 data-i18n="history.wit.h_kaplica">Kaplica św. Marii Magdaleny</h2>
+              <div class="history-callout">
+                <div class="history-callout-mark" aria-hidden="true">⛪</div>
+                <div>
+                  <p data-i18n-html="history.wit.p_kaplica_box">
+                    Murowana, <strong>ośmioboczna</strong> kaplica z ok. <strong>1677 roku</strong>, postawiona w ogrodzie dworu kapituły krakowskiej. Nieopodal — przydrożna figura Męki Pańskiej z <strong>1632 roku</strong>. Oba obiekty stoją do dziś.
+                  </p>
+                </div>
+              </div>
+              <p data-i18n="history.wit.p_kaplica1">
+                Niewielka, ośmioboczna, z prostymi liniami — nie z tych kaplic, na które zaprowadzają wycieczki, ale właśnie dlatego ciekawsza. Ponad trzysta pięćdziesiąt lat stoi cicho między nowymi blokami i niczego nie udaje. To jeden z najstarszych obiektów na całej północy Krakowa.
+              </p>
+              <p data-i18n="history.wit.p_kaplica2">
+                Wezwanie św. Marii Magdaleny jest typowe dla małych wiejskich kaplic kapitulnych — patronka pokuty i nawrócenia, popularna w polskim wiejskim kościele od średniowiecza.
+              </p>
+            </section>
+
+            <section id="wit-prochownia" class="history-section">
+              <h2 data-i18n="history.wit.h_prochownia">Prochownia, która wyleciała w powietrze</h2>
+              <p data-i18n-html="history.wit.p_prochownia1">
+                W połowie <strong>XIX wieku</strong> Austriacy budują w Witkowicach umocnienia ziemne zewnętrznego pierścienia <strong>Twierdzy Kraków</strong>. Razem z nimi staje tu prochownia — magazyn materiałów wybuchowych dla całego ufortyfikowanego miasta.
+              </p>
+              <p data-i18n="history.wit.p_prochownia2">
+                W 1927 roku prochownia wylatuje w powietrze. Eksplozja jest słyszalna w całym Krakowie, niszczy znaczną część zabudowy wsi i przez dekady pozostaje jednym z najczęściej wspominanych wydarzeń międzywojennego miasta. Dziś po prochowni nie ma już śladu — ale pamięć o wybuchu została w lokalnych opowieściach.
+              </p>
+              <blockquote class="history-quote">
+                <span data-i18n="history.wit.q_prochownia">„Wybuch słyszano w całym Krakowie.”</span>
+                <cite data-i18n-html="history.wit.q_prochownia_cite">— Wikipedia, <i>Witkowice (Kraków)</i></cite>
+              </blockquote>
+            </section>
+
+            <section id="wit-stara" class="history-section">
+              <h2 data-i18n="history.wit.h_stara">Stara wieś dziś</h2>
+              <p data-i18n="history.wit.p_stara1">
+                Witkowice nie zostały zrównane z ziemią ani „uporządkowane” pod nową zabudowę — między blokami z lat 90. i nowymi deweloperskimi osiedlami przetrwały kawałki dawnej wsi. Stare, wąskie drogi, parterowe domy, sady, krzyże przydrożne. Idąc bocznymi uliczkami można przez chwilę zapomnieć, że jest się w granicach miasta.
+              </p>
+              <p data-i18n="history.wit.p_stara2">
+                Warto patrzeć na adresy: ulica Witkowicka, Górka Narodowa, Bibiczanka — wszystkie nazwy mają wiejski rodowód. Numer 1 to często jeszcze stary dom z czasów, gdy wieś żyła z roli, a dwucyfrowe numery to już zabudowa powojenna.
+              </p>
+              <p class="history-aside" data-i18n="history.wit.p_stara_aside">
+                Najlepszy moment na spacer po starych Witkowicach: późne popołudnie wiosną lub jesienią, gdy światło wpada nisko między dachy i pokazuje warstwy zabudowy z różnych dekad.
+              </p>
+            </section>
+
+            <section id="wit-park" class="history-section">
+              <h2 data-i18n="history.wit.h_park">Park Leśny Witkowice</h2>
+              <p class="history-drop" data-i18n-html="history.wit.p_park1">
+                <span class="history-dropcap">P</span>oza historią wsi Witkowice mają jeszcze jeden atut — <strong>Park Leśny Witkowice</strong>, fragment naturalnej zieleni na północnym skraju Dzielnicy IV, między doliną Białuchy a osiedlem Witkowice Nowe. Dla mieszkańców naszej Wspólnoty to najbliższy prawdziwy las.
+              </p>
+              <p data-i18n="history.wit.p_park2">
+                Nie jest to wypielęgnowany trawnik z ławeczkami — to porządny drzewostan, gruntowe ścieżki i polany. Sosny, dęby, brzozy. Jesienią rude dywany liści, latem cień nad głową, wiosną pierwsze fiołki w trawie.
+              </p>
+              <blockquote class="history-quote">
+                <span data-i18n="history.wit.q_park">„W 5 minut przechodzi się z chodnika prosto między pnie sosen.”</span>
+                <cite data-i18n="history.wit.q_park_cite">— rzadki przypadek w Krakowie</cite>
+              </blockquote>
+              <p data-i18n="history.wit.p_park3">
+                Park nadaje się na poranny bieg, spacer z dzieckiem, wyjście z psem albo zwykłą półgodzinną przerwę od ekranu. Otwarty zawsze, dostępny dla wszystkich.
+              </p>
+            </section>
+
+            <section id="wit-zrodla" class="history-section history-sources">
+              <h2 data-i18n="history.wit.h_zrodla">Źródła</h2>
+              <ul>
+                <li>
+                  <a href="https://pl.wikipedia.org/wiki/Witkowice_(Krak%C3%B3w)" target="_blank" rel="noopener">Wikipedia — Witkowice (Kraków)</a>
+                  <span class="history-source-note" data-i18n="history.wit.src1_note">(historia wsi, kaplica św. Marii Magdaleny, prochownia, eksplozja 1927 r.)</span>
+                </li>
+                <li>
+                  <a href="https://pl.wikipedia.org/wiki/Park_Le%C5%9Bny_Witkowice" target="_blank" rel="noopener">Wikipedia — Park Leśny Witkowice</a>
+                  <span class="history-source-note" data-i18n="history.wit.src2_note">(opis parku, drzewostan, lokalizacja)</span>
+                </li>
+                <li>
+                  <a href="https://pl.wikipedia.org/wiki/Twierdza_Krak%C3%B3w" target="_blank" rel="noopener">Wikipedia — Twierdza Kraków</a>
+                  <span class="history-source-note" data-i18n="history.wit.src3_note">(zewnętrzny pierścień umocnień XIX w.)</span>
+                </li>
+              </ul>
+              <p class="history-license" data-i18n-html="history.wit.license">
+                Treści historyczne opracowane na podstawie haseł Wikipedii dostępnych na licencji <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.pl" target="_blank" rel="noopener">CC BY-SA 4.0</a>.
+              </p>
+            </section>
+
+          </article>
+        </div>
+      </article>
+
+    </div>
+
+    <nav class="book-pager-nav" aria-label="Nawigacja księgi">
+      <button class="book-nav-btn" type="button" data-dir="prev" id="bookPrev" disabled>
+        <span aria-hidden="true">←</span>
+        <span data-i18n="history.book.prev">Poprzedni rozdział</span>
+      </button>
+      <span class="book-pager-indicator">
+        <span data-i18n="history.book.chapterLabel">Rozdział</span>
+        <span class="book-pager-current" id="bookCurrent">1</span>
+        <span aria-hidden="true">/</span>
+        <span class="book-pager-total" id="bookTotal">2</span>
+      </span>
+      <button class="book-nav-btn" type="button" data-dir="next" id="bookNext">
+        <span data-i18n="history.book.next">Następny rozdział</span>
+        <span aria-hidden="true">→</span>
+      </button>
+    </nav>
+
+  </div>
 </main>
 
 <footer class="site-footer">
@@ -293,6 +562,7 @@
 <script src="site/js/theme.js" defer></script>
 <script src="site/js/pwa.js" defer></script>
 <script src="site/js/history-video.js" defer></script>
+<script src="site/js/history-book.js" defer></script>
 <script>
   (function(){
     const links = Array.from(document.querySelectorAll('.history-toc a[href^="#"]'));

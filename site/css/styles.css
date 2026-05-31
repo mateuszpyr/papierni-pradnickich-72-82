@@ -2787,14 +2787,301 @@ body.search-open { overflow: hidden; }
   padding: 2rem 1.25rem 4rem;
 }
 
+/* ===== Book / chapters ===== */
+.book-stage {
+  position: relative;
+  container-type: inline-size;
+  container-name: bookstage;
+}
+
+/* When stage gets narrow (tabs would wrap), hide titles and show only Roman numerals */
+@container bookstage (max-width: 640px) {
+  .book-tab-title { display: none; }
+  .book-tab { padding: 0.55rem 0.95rem; }
+  .book-tab-num { font-size: 1.25rem; min-width: auto; }
+}
+
+/* Tabs wrapper provides edge fades when scrollable */
+.book-tabs-wrap {
+  position: relative;
+}
+.book-tabs-wrap.is-overflow::before,
+.book-tabs-wrap.is-overflow::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 28px;
+  pointer-events: none;
+  z-index: 5;
+}
+.book-tabs-wrap.is-overflow.has-left::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--bg) 0%, transparent 100%);
+}
+.book-tabs-wrap.is-overflow.has-right::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--bg) 0%, transparent 100%);
+}
+.book-tabs-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 6;
+  width: 34px;
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg-elev);
+  color: var(--muted);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.10), 0 0 0 4px var(--bg);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease, background-color 0.18s ease, color 0.18s ease, border-color 0.18s ease, transform 0.15s ease;
+}
+.book-tabs-arrow.is-visible {
+  opacity: 1;
+  visibility: visible;
+}
+.book-tabs-arrow:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  transform: translateY(-50%) scale(1.06);
+}
+.book-tabs-arrow:active { transform: translateY(-50%) scale(0.94); }
+.book-tabs-arrow svg { display: block; }
+.book-tabs-arrow--left { left: -10px; }
+.book-tabs-arrow--right { right: -10px; }
+
+/* Tabs — file-folder style, attached to the chapter via a baseline border */
+.book-tabs {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 0.3rem;
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border-bottom: 0;
+  position: relative;
+  z-index: 4;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  /* Hide scrollbar visually but keep scroll functionality */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.book-tabs::-webkit-scrollbar { display: none; width: 0; height: 0; }
+.book-tab {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.4rem;
+  border: 1px solid var(--border);
+  border-bottom: 0;
+  border-radius: 12px 12px 0 0;
+  background: var(--bg-alt);
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-family: 'Cormorant Garamond', serif;
+  letter-spacing: 0.01em;
+  text-align: left;
+  transition: background-color 0.18s ease, color 0.18s ease;
+}
+.book-tab:hover:not(.is-active) {
+  background: var(--bg-elev);
+  color: var(--text);
+}
+.book-tab.is-active {
+  /* default — overridden per data-chapter below to match hero diagonal gradient at each position */
+  background: linear-gradient(180deg, var(--bg-elev) 0%, color-mix(in srgb, var(--accent) 10%, var(--bg)) 100%);
+  color: var(--accent);
+  border-color: var(--border);
+  z-index: 2;
+}
+/* hero gradient is 135deg with 10% accent at top-left, fading toward top-right -> tabs follow that on their bottom edge */
+.book-tab.is-active[data-chapter="papiernia"] {
+  background: linear-gradient(180deg, var(--bg-elev) 0%, color-mix(in srgb, var(--accent) 14%, var(--bg)) 100%);
+}
+.book-tab.is-active[data-chapter="witkowice"] {
+  background: linear-gradient(180deg, var(--bg-elev) 0%, color-mix(in srgb, var(--accent) 7%, var(--bg)) 100%);
+}
+.book-tab-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  min-width: 1.2em;
+  text-align: center;
+  opacity: 0.85;
+}
+.book-tab.is-active .book-tab-num { opacity: 1; }
+.book-tab-title { font-weight: 600; font-size: 1.05rem; }
+
+/* Compact mode: distant (non-adjacent) tabs show only their Roman numeral.
+   Set dynamically by JS. */
+.book-tab--compact .book-tab-title { display: none; }
+.book-tab--compact { padding-left: 1rem; padding-right: 1rem; }
+
+/* Book page — no paper-card wrapper, tabs hang above the chapter heading */
+.book-pager {
+  position: relative;
+  min-height: 400px;
+}
+/* overflow:hidden only during page flip — otherwise it breaks position:sticky in the TOC */
+.book-stage.is-flipping .book-pager { overflow: hidden; }
+
+/* Pre-paint initial chapter selection to avoid FOUC of chapter 1 when hash points to chapter 2 */
+[data-book-init="witkowice"] .book-page[data-chapter="papiernia"] { display: none !important; }
+[data-book-init="witkowice"] .book-page[data-chapter="witkowice"] { display: block !important; }
+[data-book-init="witkowice"] .book-tab[data-chapter="papiernia"] { background: var(--bg-alt); color: var(--muted); }
+[data-book-init="witkowice"] .book-tab[data-chapter="witkowice"] { background: linear-gradient(180deg, var(--bg-elev) 0%, color-mix(in srgb, var(--accent) 7%, var(--bg)) 100%); color: var(--accent); }
+.book-page {
+  will-change: transform, opacity;
+}
+.book-page[hidden] { display: none; }
+.book-page.is-active { display: block; opacity: 1; }
+
+.book-stage.is-flipping { position: relative; }
+.book-stage.is-flipping .book-page { display: block !important; }
+.book-stage.is-flipping .book-page:not(.is-active):not(.book-page--enter-next):not(.book-page--enter-prev):not(.book-page--exit-next):not(.book-page--exit-prev) { display: none !important; }
+
+/* Page-turn: pure crossfade — no motion, no scale.
+   Most accessible variant: shows page change without any sliding. */
+@keyframes bookExitNext { 0% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes bookEnterNext { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes bookExitPrev { 0% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes bookEnterPrev { 0% { opacity: 0; } 100% { opacity: 1; } }
+.book-page--exit-next,
+.book-page--exit-prev {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  animation-duration: 0.2s;
+  animation-timing-function: cubic-bezier(.4,0,.2,1);
+  animation-fill-mode: forwards;
+}
+.book-page--exit-next  { animation-name: bookExitNext; }
+.book-page--exit-prev  { animation-name: bookExitPrev; }
+.book-page--enter-next,
+.book-page--enter-prev {
+  position: relative;
+  z-index: 1;
+  animation-duration: 0.25s;
+  animation-delay: 0.05s;
+  animation-timing-function: cubic-bezier(.2,.6,.3,1);
+  animation-fill-mode: both;
+}
+.book-page--enter-next { animation-name: bookEnterNext; }
+.book-page--enter-prev { animation-name: bookEnterPrev; }
+
+/* Pager nav */
+.book-pager-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  padding: 0.9rem 1.25rem;
+  border-radius: 12px;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  position: relative;
+}
+.book-pager-nav::before,
+.book-pager-nav::after {
+  content: '❦';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--accent);
+  opacity: 0.35;
+}
+.book-pager-nav::before { left: 48%; }
+.book-pager-nav::after  { right: 48%; display: none; }
+.book-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg-elev);
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: background-color 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
+}
+.book-nav-btn:hover:not(:disabled) {
+  background: var(--accent-faint);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+.book-nav-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.book-pager-indicator {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.book-pager-current { font-weight: 700; font-style: normal; color: var(--accent); }
+
+/* Witkowice hero variant — paper/forest motif */
+.history-hero--witkowice .history-hero-media {
+  background: linear-gradient(135deg, rgba(76,175,110,0.08), rgba(76,175,110,0.02));
+}
+.history-hero-media--static .history-hero-media-fallback {
+  position: relative;
+  inset: auto;
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: var(--accent, #4caf6e);
+}
+
+[data-theme="light"] .history-hero--witkowice .history-hero-media {
+  background: linear-gradient(135deg, rgba(76,175,110,0.18), rgba(76,175,110,0.04));
+}
+
+/* Reduced motion: no flip, just fade */
+@media (prefers-reduced-motion: reduce) {
+  .book-page { transition: opacity 0.2s ease; transform: none !important; }
+  .book-page--exit-next, .book-page--exit-prev,
+  .book-page--enter-next, .book-page--enter-prev { transform: none !important; }
+}
+
+/* Mobile tabs */
+@media (max-width: 600px) {
+  .book-pager-nav { flex-direction: column; gap: 0.75rem; }
+  .book-nav-btn { width: 100%; justify-content: center; }
+}
+
 /* Hero */
 .history-hero {
   position: relative;
   margin: 0 0 3rem;
-  padding: 3.5rem 2rem 3rem;
+  padding: 2rem 2rem 3rem;
   background: linear-gradient(135deg, rgba(76,175,110,0.10), rgba(76,175,110,0.02) 60%);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-top: 0;
+  border-radius: 0 var(--radius) var(--radius) var(--radius);
   overflow: hidden;
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
