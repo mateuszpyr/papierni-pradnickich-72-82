@@ -30,8 +30,9 @@
     if (!h) return null;
     // Direct match: hash equals a chapter name (e.g. #witkowice, #test6)
     if (pages.some((p) => p.dataset.chapter === h)) return h;
-    // Section prefix match for Witkowice (e.g. #wit-park)
+    // Section prefix match for sub-chapters
     if (h.startsWith('wit-')) return 'witkowice';
+    if (h.startsWith('gor-')) return 'gorka';
     return 'papiernia';
   }
 
