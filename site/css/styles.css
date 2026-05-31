@@ -3007,9 +3007,12 @@ body.search-open { overflow: hidden; }
   font-size: 1rem;
   color: var(--accent);
   opacity: 0.35;
+  z-index: 0;
+  pointer-events: none;
 }
 .book-pager-nav::before { left: 48%; }
 .book-pager-nav::after  { right: 48%; display: none; }
+.book-pager-nav > * { position: relative; z-index: 1; }
 .book-nav-btn {
   display: inline-flex;
   align-items: center;

@@ -5,7 +5,7 @@
  *  - Static assets (CSS/JS/img/font): stale-while-revalidate from cache.
  * No precaching — keeps the worker safe even if file list changes.
  */
-const VERSION = 'v27';
+const VERSION = 'v28';
 const RUNTIME = 'wp-runtime-' + VERSION;
 
 self.addEventListener('install', (event) => {
