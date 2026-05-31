@@ -553,38 +553,16 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   gap: clamp(1.25rem, 2vw, 2rem);
 }
 
-/* Magazine layout — hero left, 2 mini cards stacked right (zero.pl style).
-   Falls back to single column below 900px. */
-@media (min-width: 900px) {
-  .news-page .news-grid {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    align-items: stretch;
-  }
-  .news-page .news-grid > .news-hero-card {
-    grid-column: 1;
-    grid-row: 1;
-    min-height: clamp(420px, 52vh, 600px);
-    aspect-ratio: auto;
-  }
-  .news-page .news-grid > .news-secondary-grid {
-    grid-column: 2;
-    grid-row: 1;
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr 1fr;
-    gap: clamp(.75rem, 1vw, 1rem);
-    align-self: stretch;
-    min-width: 0;
-  }
-  .news-page .news-grid > .news-secondary-grid > .news-card {
-    min-height: 0;
-  }
-  .news-page .news-grid > .news-compact-heading,
-  .news-page .news-grid > .news-compact-list,
-  .news-page .news-grid > .news-more-wrap {
-    grid-column: 1 / -1;
-  }
+/* Featured hero card — prominent but proportioned, never overwhelming */
+.news-page .news-hero-card {
+  min-height: clamp(420px, 52vh, 600px);
+  aspect-ratio: 16 / 9;
+}
+
+/* Secondary cards — clean responsive grid (2 columns on wide, 1 on narrow) */
+.news-page .news-secondary-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+  gap: clamp(1rem, 1.5vw, 1.5rem);
 }
 
 /* Slightly larger ultra-wide variant — still capped */
