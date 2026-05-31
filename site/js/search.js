@@ -67,21 +67,41 @@
   let dataset = null; // built lazily
   let loadPromise = null;
 
-  function buildHandbookEntries(lang) {
-    // Static curated entries — covers headings + key topics from handbook.html.
+  async function buildHandbookEntries(lang) {
+    // handbook.html is Polish-only; we fetch and parse its actual content so
+    // search returns real text snippets (phone numbers, names, FAQs, …)
+    try {
+      const html = await fetch('handbook.html', { cache: 'no-cache' }).then((r) => r.text());
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const sections = doc.querySelectorAll('.hb-doc-section[id]');
+      const entries = [];
+      sections.forEach((sec) => {
+        const id = sec.id;
+        const h = sec.querySelector('h2, h1');
+        const title = (h && h.textContent.trim()) || id;
+        const text = sec.textContent.replace(/\s+/g, ' ').trim();
+        entries.push({
+          kind: 'handbook',
+          title,
+          excerpt: text.slice(title.length).trim().slice(0, 160) + (text.length > 160 ? '…' : ''),
+          url: 'handbook.html#' + id,
+          hay: norm(title + ' ' + text),
+          body: text,
+        });
+      });
+      if (entries.length) return entries;
+    } catch (e) { /* fall through */ }
+
+    // Fallback static list (used if fetch fails)
     const pl = [
-      { title: 'Telefony alarmowe',        keywords: '112 999 998 997 pogotowie straż pożarna policja',         hash: '#emergency' },
-      { title: 'Zarząd wspólnoty',          keywords: 'zarząd kontakt mail telefon',                              hash: '#management' },
-      { title: 'Administrator',              keywords: 'administrator zarządca firma kontakt',                     hash: '#administrator' },
-      { title: 'Najczęstsze pytania (FAQ)',  keywords: 'faq pytania awaria opłaty czynsz parking',                hash: '#faq' },
-      { title: 'Grupy społecznościowe',      keywords: 'messenger facebook grupa sąsiedzka dyskusja',              hash: '#groups' },
+      { title: 'Telefony alarmowe',        keywords: '112 999 998 997 pogotowie straż pożarna policja',         hash: '#alarmowe' },
+      { title: 'Administracja',             keywords: 'administrator zarządca firma kontakt',                     hash: '#administracja' },
+      { title: 'Najczęstsze pytania (FAQ)', keywords: 'faq pytania awaria opłaty czynsz parking',                 hash: '#faq' },
     ];
     const en = [
-      { title: 'Emergency numbers',          keywords: '112 999 998 997 ambulance fire police',                    hash: '#emergency' },
-      { title: 'Community board',            keywords: 'board contact mail phone management',                       hash: '#management' },
-      { title: 'Property manager',            keywords: 'administrator property manager company contact',           hash: '#administrator' },
-      { title: 'FAQ',                         keywords: 'faq questions breakdown fees rent parking',                hash: '#faq' },
-      { title: 'Community groups',            keywords: 'messenger facebook group neighbour discussion',             hash: '#groups' },
+      { title: 'Emergency numbers',         keywords: '112 999 998 997 ambulance fire police',                    hash: '#alarmowe' },
+      { title: 'Property manager',          keywords: 'administrator property manager company contact',           hash: '#administracja' },
+      { title: 'FAQ',                       keywords: 'faq questions breakdown fees rent parking',                hash: '#faq' },
     ];
     return (lang === 'en' ? en : pl).map((it) => ({
       kind: 'handbook',
@@ -193,7 +213,7 @@
       } catch (e) { /* ignore */ }
 
       // handbook static entries
-      buildHandbookEntries(lang).forEach((h) => items.push(h));
+      (await buildHandbookEntries(lang)).forEach((h) => items.push(h));
 
       // history static entries
       (await buildHistoryEntries(lang)).forEach((h) => items.push(h));
