@@ -3071,6 +3071,8 @@ body.search-open { overflow: hidden; }
 @media (max-width: 600px) {
   .book-pager-nav { flex-direction: column; gap: 0.75rem; }
   .book-nav-btn { width: 100%; justify-content: center; }
+  /* Hide ornament ❦ on mobile — it overlaps with stacked indicator text */
+  .book-pager-nav::before, .book-pager-nav::after { display: none; }
 }
 
 /* Hero */
