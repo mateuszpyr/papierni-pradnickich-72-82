@@ -1,4 +1,19 @@
 (function () {
+  // Pin hero height to the actual visible viewport — fixes mobile gap below hero when
+  // 100vh / 100dvh disagrees with the real visual viewport (Safari, embedded webviews).
+  // Also tracks header height (it wraps on mobile and grows beyond the static --header-h var).
+  const setMetrics = () => {
+    const h = (window.visualViewport && window.visualViewport.height) || window.innerHeight;
+    document.documentElement.style.setProperty('--vh', h + 'px');
+    const hdr = document.querySelector('.site-header');
+    if (hdr) document.documentElement.style.setProperty('--header-h', hdr.getBoundingClientRect().height + 'px');
+  };
+  setMetrics();
+  window.addEventListener('load', setMetrics, { passive: true, once: true });
+  window.addEventListener('resize', setMetrics, { passive: true });
+  window.addEventListener('orientationchange', setMetrics, { passive: true });
+  if (window.visualViewport) window.visualViewport.addEventListener('resize', setMetrics, { passive: true });
+
   const v = document.getElementById('heroVideo');
   const btnPlay  = document.getElementById('videoToggle');
   const btnSound = document.getElementById('soundToggle');

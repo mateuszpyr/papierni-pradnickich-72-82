@@ -172,6 +172,10 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
 .hero {
   position: relative;
   min-height: calc(100vh - var(--header-h));
+  min-height: calc(100svh - var(--header-h));
+  min-height: calc(100dvh - var(--header-h));
+  /* JS-set --vh tracks visualViewport precisely (Safari/iOS, embedded webviews). */
+  min-height: calc(var(--vh, 100dvh) - var(--header-h));
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2149,7 +2153,10 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   .site-nav { order: 3; width: 100%; justify-content: center; gap: 1rem; flex-wrap: wrap; }
   .site-nav a { font-size: .85rem; }
   .header-tools { margin-left: auto; }
-  .hero { min-height: 70vh; }
+  .hero {
+    /* match desktop: fill the visible viewport below the (now auto-sized) header */
+    min-height: calc(var(--vh, 100dvh) - var(--header-h));
+  }
   .hero-cta { flex-direction: column; align-items: stretch; }
   .footer-inner { flex-direction: column; text-align: center; }
 }
