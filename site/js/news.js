@@ -11,7 +11,12 @@
   }
 
   let newsData = [];
+  let newsStubs = [];     // [{filename, date, slug}] sorted newest -> oldest
+  let loadedSlugs = new Set();
   let isLoading = true;
+  let loadingMore = false;
+  let lazyEnabled = false; // only on news-index.html (listRoot without data-limit)
+  const BATCH = 8;
 
   // --- Markdown file loader ---------------------------------------------
   // Parses our minimal YAML frontmatter (single-quoted scalars or bare numbers)
@@ -49,23 +54,122 @@
     return item;
   }
 
-  async function loadFromMarkdown() {
-    const idxRes = await fetch('news/items/index.json', { cache: 'no-cache' });
-    if (!idxRes.ok) throw new Error('index.json missing');
-    const files = await idxRes.json();
-    const items = await Promise.all(files.map(async (f) => {
-      const r = await fetch(`news/items/${f}`, { cache: 'no-cache' });
-      if (!r.ok) throw new Error(`failed: ${f}`);
-      return parseNewsMarkdown(await r.text());
-    }));
-    return items.filter(Boolean).sort((a, b) => (a.date < b.date ? 1 : -1));
+  // Parse "2026-05-29-some-slug.md" into a lightweight stub for skeleton rendering.
+  function parseStub(filename) {
+    const m = filename.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.md$/);
+    if (!m) return null;
+    return { filename, date: m[1], slug: m[2] };
+  }
+
+  async function loadIndex() {
+    const r = await fetch('news/items/index.json', { cache: 'no-cache' });
+    if (!r.ok) throw new Error('index.json missing');
+    const files = await r.json();
+    return files.map(parseStub).filter(Boolean)
+      .sort((a, b) => (a.date < b.date ? 1 : -1));
+  }
+
+  async function fetchItem(stub) {
+    if (loadedSlugs.has(stub.slug)) return null;
+    const r = await fetch(`news/items/${stub.filename}`, { cache: 'no-cache' });
+    if (!r.ok) throw new Error(`failed: ${stub.filename}`);
+    const item = parseNewsMarkdown(await r.text());
+    if (item) {
+      newsData.push(item);
+      loadedSlugs.add(item.slug);
+    }
+    return item;
+  }
+
+  // Load up to `count` items in bulk (used for initial render where DOM does not
+  // exist yet, e.g. to fill hero + secondary cards before first paint).
+  async function loadBulk(count) {
+    const remaining = newsStubs.filter((s) => !loadedSlugs.has(s.slug)).slice(0, count);
+    if (!remaining.length) return;
+    await Promise.all(remaining.map((s) => fetchItem(s).catch(() => null)));
+  }
+
+  // Surgical incremental load: each fetched item is dropped into the DOM as soon
+  // as it arrives, so skeleton rows turn into real rows one-by-one (not in waves).
+  async function loadSurgical(count) {
+    if (loadingMore) return;
+    loadingMore = true;
+    try {
+      const remaining = newsStubs.filter((s) => !loadedSlugs.has(s.slug)).slice(0, count);
+      if (!remaining.length) return;
+      const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
+      await Promise.all(remaining.map(async (s) => {
+        try {
+          await fetchItem(s);
+          if (listRoot && lazyEnabled) replaceSkeletonWith(s.slug, lang);
+          if (detailRoot) renderDetail();
+        } catch {}
+      }));
+    } finally {
+      loadingMore = false;
+      if (loadedSlugs.size >= newsStubs.length && lazyObserver) {
+        lazyObserver.disconnect();
+      }
+    }
+  }
+
+  function replaceSkeletonWith(slug, lang) {
+    if (!listRoot) return;
+    const el = listRoot.querySelector(`[data-skeleton-slug="${cssEscape(slug)}"]`);
+    if (!el) return;
+    const item = newsData.find((n) => n.slug === slug);
+    if (!item) return;
+    const tmp = document.createElement('div');
+    tmp.innerHTML = compactRowHtml(item, lang).trim();
+    if (tmp.firstElementChild) el.replaceWith(tmp.firstElementChild);
+  }
+
+  function cssEscape(s) {
+    if (window.CSS && CSS.escape) return CSS.escape(s);
+    return String(s).replace(/[^\w-]/g, (c) => `\\${c}`);
+  }
+
+  // Bring a single item identified by slug into newsData (for detail page deep links).
+  async function loadOne(slug) {
+    if (loadedSlugs.has(slug)) return;
+    const stub = newsStubs.find((s) => s.slug === slug);
+    if (!stub) return;
+    await fetchItem(stub).catch(() => null);
   }
 
   async function load() {
     try {
-      newsData = await loadFromMarkdown();
-      isLoading = false;
-      render();
+      newsStubs = await loadIndex();
+
+      // Detail page: load the target post first, render, then top up related pool.
+      if (detailRoot) {
+        const params = new URLSearchParams(location.search);
+        const slug = params.get('slug');
+        if (slug) await loadOne(slug);
+        isLoading = false;
+        render();
+        loadSurgical(BATCH); // background-fill related pool; renderDetail per arrival
+        return;
+      }
+
+      // List page: honor data-limit on the home grid; otherwise enable lazy scroll.
+      if (listRoot) {
+        const limitAttr = listRoot.getAttribute('data-limit');
+        const limit = limitAttr ? parseInt(limitAttr, 10) : 0;
+        if (limit > 0) {
+          await loadBulk(limit);
+          isLoading = false;
+          render();
+        } else {
+          lazyEnabled = true;
+          // Wait for the first 3 so hero + secondary cards have real content on first paint.
+          await loadBulk(3);
+          isLoading = false;
+          render();
+          // The IntersectionObserver (per skeleton) takes over from here — it will load
+          // each row as it scrolls into view (incl. the rest already visible on first paint).
+        }
+      }
     } catch (e) {
       isLoading = false;
       const errMsg = (window.WP_I18N && window.WP_I18N.t('news.error')) || 'Nie udało się załadować ogłoszeń.';
@@ -267,18 +371,34 @@
       </a>`;
   }
 
+  // Skeleton compact row (real date + slug hint, shimmering title bar).
+  function skeletonRowHtml(stub, lang) {
+    return `
+      <div class="news-compact-row news-compact-row--skeleton" data-skeleton-slug="${escapeHtml(stub.slug)}" aria-hidden="true">
+        <div class="news-compact-thumb news-compact-thumb--empty"></div>
+        <time class="news-compact-date">${fmtDate(stub.date, lang)}</time>
+        <div class="news-compact-text">
+          <span class="news-list-tag news-compact-tag skeleton-bar">&nbsp;</span>
+          <span class="news-compact-title skeleton-bar">&nbsp;</span>
+        </div>
+        <span class="news-compact-author skeleton-bar">&nbsp;</span>
+        <span class="news-compact-readmin skeleton-bar">&nbsp;</span>
+      </div>`;
+  }
+
   function renderList() {
     const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
-    if (!newsData.length) {
+    if (!newsData.length && !newsStubs.length) {
       if (isLoading) return; // keep skeleton visible during initial load
       listRoot.innerHTML = `<p class="news-loading">${(window.WP_I18N && window.WP_I18N.t('news.empty')) || 'Brak aktualności.'}</p>`;
       return;
     }
-    const sorted = [...newsData].sort((a, b) => (a.date < b.date ? 1 : -1));
+    // Loaded items, in stub-order (already newest-first).
+    const loadedInOrder = newsStubs.map((s) => newsData.find((n) => n.slug === s.slug)).filter(Boolean);
     const limitAttr = listRoot.getAttribute('data-limit');
     const limit = limitAttr ? parseInt(limitAttr, 10) : 0;
-    const items = limit > 0 ? sorted.slice(0, limit) : sorted;
-    const hasMore = limit > 0 && sorted.length > limit;
+    const items = limit > 0 ? loadedInOrder.slice(0, limit) : loadedInOrder;
+    const hasMore = limit > 0 && newsStubs.length > limit;
     const moreLabel = (window.WP_I18N && window.WP_I18N.t('news.all')) || (lang === 'en' ? 'All news' : 'Wszystkie aktualności');
     const useFeatured = listRoot.hasAttribute('data-featured');
 
@@ -286,12 +406,20 @@
     if (useFeatured && items.length > 0) {
       const heroHtml = featuredCardHtml(items[0], lang);
       const secondaryItems = items.slice(1, 3);
-      const compactItems = items.slice(3);
+      const compactLoaded = items.slice(3);
       const secondaryHtml = secondaryItems.length
         ? `<div class="news-secondary-grid">${secondaryItems.map(n => compactCardHtml(n, lang)).join('')}</div>`
         : '';
-      const compactHtml = compactItems.length
-        ? `<h2 class="news-compact-heading">${lang === 'en' ? 'Older' : 'Pozostałe'}</h2><div class="news-compact-list">${compactItems.map(n => compactRowHtml(n, lang)).join('')}</div>`
+
+      // Skeleton rows for the remaining (not-yet-loaded) stubs — only when lazy mode is on.
+      let skeletonHtml = '';
+      if (lazyEnabled) {
+        const loadedSet = new Set(loadedInOrder.map((n) => n.slug));
+        const remainingStubs = newsStubs.filter((s) => !loadedSet.has(s.slug));
+        skeletonHtml = remainingStubs.map((s) => skeletonRowHtml(s, lang)).join('');
+      }
+      const compactHtml = (compactLoaded.length || skeletonHtml)
+        ? `<h2 class="news-compact-heading">${lang === 'en' ? 'Older' : 'Pozostałe'}</h2><div class="news-compact-list">${compactLoaded.map(n => compactRowHtml(n, lang)).join('')}${skeletonHtml}<div class="news-lazy-sentinel" aria-hidden="true"></div></div>`
         : '';
       html = heroHtml + secondaryHtml + compactHtml;
     } else {
@@ -307,7 +435,42 @@
     } else {
       document.querySelectorAll('.news-more-wrap').forEach((el) => el.remove());
     }
+
+    if (lazyEnabled) setupLazyObserver();
   }
+
+  let lazyObserver = null;
+  function setupLazyObserver() {
+    if (!listRoot) return;
+    const skeletons = listRoot.querySelectorAll('.news-compact-row--skeleton');
+    if (!skeletons.length) return;
+    if (lazyObserver) lazyObserver.disconnect();
+    const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';
+    lazyObserver = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        const el = entry.target;
+        lazyObserver.unobserve(el);
+        const slug = el.getAttribute('data-skeleton-slug');
+        if (!slug) continue;
+        const stub = newsStubs.find((s) => s.slug === slug);
+        if (!stub) continue;
+        // Pass the element + freshly fetched item directly — avoids relying on
+        // skeleton-slug === frontmatter-slug (they sometimes differ for legacy posts).
+        fetchItem(stub)
+          .then((item) => { if (item) swapElementWithItem(el, item, lang); })
+          .catch(() => {});
+      }
+    }, { rootMargin: '400px 0px' });
+    skeletons.forEach((s) => lazyObserver.observe(s));
+  }
+
+  function swapElementWithItem(el, item, lang) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = compactRowHtml(item, lang).trim();
+    if (tmp.firstElementChild && el.parentNode) el.replaceWith(tmp.firstElementChild);
+  }
+
 
   function renderDetail() {
     const lang = (window.WP_I18N && window.WP_I18N.lang) || 'pl';

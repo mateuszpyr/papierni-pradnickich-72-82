@@ -728,6 +728,35 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   background: linear-gradient(135deg, var(--bg-elev), var(--bg));
   border: 1px dashed var(--border);
 }
+/* Skeleton placeholders for lazily-loaded news rows. */
+.news-compact-row--skeleton {
+  pointer-events: none;
+  cursor: default;
+}
+.skeleton-bar {
+  display: inline-block;
+  min-height: 0.9em;
+  border-radius: 4px;
+  color: transparent !important;
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--text-muted) 12%, transparent) 0%,
+    color-mix(in srgb, var(--text-muted) 24%, transparent) 50%,
+    color-mix(in srgb, var(--text-muted) 12%, transparent) 100%);
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.4s ease-in-out infinite;
+}
+.news-compact-row--skeleton .news-compact-title.skeleton-bar { width: 65%; }
+.news-compact-row--skeleton .news-compact-tag.skeleton-bar { width: 4.5rem; }
+.news-compact-row--skeleton .news-compact-author.skeleton-bar { width: 6rem; }
+.news-compact-row--skeleton .news-compact-readmin.skeleton-bar { width: 2.8rem; }
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .skeleton-bar { animation: none; }
+}
+.news-lazy-sentinel { height: 1px; }
 .news-compact-date {
   font-size: .85rem;
   color: var(--text-muted);
