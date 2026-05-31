@@ -126,9 +126,9 @@
 
     const fallbacks = lang === 'en'
       ? { root: 'History of the estate', toc1: 'Where does the name come from?', toc2: 'Timeline', toc3: 'First paper mill', toc4: 'Jan Haller paper mill', toc5: 'Prądnik bread', toc6: 'Today', toc7: 'Sources',
-          witRoot: 'Witkowice — neighbour across the river', witToc1: 'Witkowice Forest Park', witToc2: 'Village timeline', witToc3: 'St. Mary Magdalene Chapel', witToc4: 'Powder magazine, 1927 blast', witToc5: 'How to walk there', witToc6: 'Sources' }
+          witRoot: 'Witkowice', witToc1: 'Witkowice Forest Park', witToc2: 'Village timeline', witToc3: 'St. Mary Magdalene Chapel', witToc4: 'Powder magazine, 1927 blast', witToc5: 'How to walk there', witToc6: 'Sources' }
       : { root: 'Historia osiedla — Stara papiernia', toc1: 'Skąd nazwa?', toc2: 'Oś czasu', toc3: 'Pierwszy młyn papierniczy', toc4: 'Papiernia Jana Hallera', toc5: 'Chleb prądnicki', toc6: 'Dzisiaj', toc7: 'Źródła',
-          witRoot: 'Witkowice — sąsiad zza rzeki', witToc1: 'Park Leśny Witkowice', witToc2: 'Oś czasu wsi', witToc3: 'Kaplica św. Marii Magdaleny', witToc4: 'Prochownia i wybuch 1927', witToc5: 'Jak dojść z osiedla', witToc6: 'Źródła' };
+          witRoot: 'Witkowice', witToc1: 'Park Leśny Witkowice', witToc2: 'Oś czasu wsi', witToc3: 'Kaplica św. Marii Magdaleny', witToc4: 'Prochownia i wybuch 1927', witToc5: 'Jak dojść z osiedla', witToc6: 'Źródła' };
 
     const chapter1 = [
       { hash: '',           title: stripHtml(h.title || fallbacks.root) + (h.eyebrow ? ' — ' + stripHtml(h.eyebrow) : ''), src: h, keys: ['eyebrow', 'title', 'lead', 'pill1', 'pill2', 'pill3'] },
