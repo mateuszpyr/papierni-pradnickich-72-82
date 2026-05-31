@@ -2998,21 +2998,7 @@ body.search-open { overflow: hidden; }
   position: relative;
 }
 .book-pager-nav::before,
-.book-pager-nav::after {
-  content: '❦';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 1rem;
-  color: var(--accent);
-  opacity: 0.35;
-  z-index: 0;
-  pointer-events: none;
-}
-.book-pager-nav::before { left: 48%; }
-.book-pager-nav::after  { right: 48%; display: none; }
-.book-pager-nav > * { position: relative; z-index: 1; }
+.book-pager-nav::after { display: none; }
 .book-nav-btn {
   display: inline-flex;
   align-items: center;
