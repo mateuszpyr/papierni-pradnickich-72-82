@@ -214,6 +214,7 @@ p  { margin: 0 0 1em; color: var(--text-soft); }
   opacity: .55;
   transition: opacity .4s, filter .4s;
 }
+[data-theme="light"] .hero-video-wrap .hero-video { opacity: .70; }
 /* Show only the matching video per theme */
 [data-theme="dark"]  #heroVideoLight { display: none; }
 [data-theme="light"] #heroVideoDark  { display: none; }
