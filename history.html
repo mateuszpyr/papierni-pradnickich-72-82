@@ -567,7 +567,6 @@
   (function(){
     const links = Array.from(document.querySelectorAll('.history-toc a[href^="#"]'));
     if (!links.length) return;
-    const ol = document.querySelector('.history-toc ol');
     const map = new Map();
     links.forEach(a => {
       const el = document.querySelector(a.getAttribute('href'));
@@ -577,6 +576,8 @@
     let clickLock = 0;
     const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
     const scrollPillIntoView = (a) => {
+      // Use the anchor's OWN <ol> — each chapter has its own TOC
+      const ol = a.closest('ol');
       if (!ol || !isMobile()) return;
       const olRect = ol.getBoundingClientRect();
       const aRect = a.getBoundingClientRect();
